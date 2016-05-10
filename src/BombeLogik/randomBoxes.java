@@ -22,7 +22,7 @@ public class randomBoxes {
     private Image img;
     
     public randomBoxes(int x, int y){
-                ImageIcon WI = new ImageIcon("C:/Users/AnwarC/Desktop/resized/block.png");
+                ImageIcon WI = new ImageIcon("src/Picture/block.png");
         img = WI.getImage();
         this.x = x;
         this.y = y;

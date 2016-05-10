@@ -24,7 +24,7 @@ public class Bombs {
 	private int bombSize = 1;
 
 	public Bombs(int ownerID){
-		ImageIcon WI = new ImageIcon("C:/Users/AnwarC/Desktop/resized/bomb.png");
+		ImageIcon WI = new ImageIcon("src/Picture/bomb.png");
 		img = WI.getImage();
 		this.bombOwner = ownerID;
 		this.firebombs.add(new fireBomb());

@@ -22,7 +22,7 @@ public class Mainpanel extends JFrame {
 
 	public JPanel contentPane;
 	Gameplay objgameplay = new Gameplay();
-	Highscore objhighscore;
+	HighscorePanel objhighscore;
 
 	/**
 	 * Launch the application.
@@ -44,7 +44,7 @@ public class Mainpanel extends JFrame {
 	 * Create the frame.
 	 */
 	public Mainpanel() {
-		objhighscore = new Highscore();
+		objhighscore = new HighscorePanel();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
@@ -78,7 +78,7 @@ public class Mainpanel extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("background.png"));
+		lblNewLabel.setIcon(new ImageIcon("src/Picture/background.png"));
 		lblNewLabel.setBounds(0, 0, 760, 600);
 		contentPane.add(lblNewLabel);
 		contentPane.setPreferredSize(new Dimension(760, 600));
@@ -90,4 +90,6 @@ public class Mainpanel extends JFrame {
 	{
 		
 	}
+	
+	
 }

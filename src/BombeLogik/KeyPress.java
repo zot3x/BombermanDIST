@@ -20,6 +20,4 @@ public class KeyPress extends KeyAdapter{
     public void keyPressed(KeyEvent e){
         
     }
-
-    
 }

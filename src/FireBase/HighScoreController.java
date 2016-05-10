@@ -1,6 +1,9 @@
 package FireBase;
 
 import java.util.ArrayList;
+
+import org.w3c.dom.NameList;
+
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -11,8 +14,10 @@ import FireBase.FirebaseListener;
 
 public class HighScoreController {
 
-	Firebase fb = new Firebase(FirebaseConnection.URL);
-
+	private Firebase fb = new Firebase(FirebaseConnection.URL);
+	private FirebaseListener fbL = new FirebaseListener();
+	private ArrayList<FirebaseUser> userList = new ArrayList<FirebaseUser>();
+	
 	public HighScoreController(){
 
 	}
@@ -24,8 +29,10 @@ public class HighScoreController {
 			@Override
 			public void run() {
 
-
-				ArrayList<FirebaseUser> scoreList = new ArrayList<FirebaseUser>();
+				
+				userList.clear();
+				
+//				ArrayList<FirebaseUser> scoreList = new ArrayList<FirebaseUser>();
 
 				Query ref = fb.child("Users");
 
@@ -35,10 +42,10 @@ public class HighScoreController {
 					public void onDataChange(DataSnapshot dataSnapshot) {
 
 						for(DataSnapshot d : dataSnapshot.getChildren()){
-							scoreList.add(d.getValue(FirebaseUser.class));
+							userList.add(d.getValue(FirebaseUser.class));
 						}
-						System.out.println(dataSnapshot.getChildrenCount());
-						aListener.top10(scoreList);
+//						System.out.println(dataSnapshot.getChildrenCount());
+						aListener.top10(userList);
 					}
 
 					@Override
@@ -50,16 +57,22 @@ public class HighScoreController {
 			}
 		};
 		run.run();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+		}
 	}
 
-	public int getSingleScore(){
-
-
-
-		return 0;
+	public ArrayList<FirebaseUser> getUserList(){
+		
+		
+		return userList;
 	}
+	
 
-	public void updateHighscore(){
+	public void updateUserList(ArrayList<FirebaseUser> updateUser){
+		
+		updateUser = 
 
 	}
 }

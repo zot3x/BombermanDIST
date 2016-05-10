@@ -40,16 +40,16 @@ public class Accounts {
         String placeMent = "null";
         switch (ID) {
             case 0:
-                placeMent = "block.png";
+                placeMent = "src/Picture/block.png";
                 break;
             case 1:
-                placeMent = "block.png";
+                placeMent = "src/Picture/block.png";
                 break;
             case 2:
-                placeMent = "block.png";
+                placeMent = "src/Picture/block.png";
                 break;
             case 3:
-                placeMent = "block.png";
+                placeMent = "src/Picture/block.png";
                 break;
             default:
                 break;

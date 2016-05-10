@@ -25,7 +25,7 @@ public class fireBomb {
     private int fireTimeOn = 50;
 
     public fireBomb() {
-        ImageIcon WI = new ImageIcon("C:/Users/AnwarC/Desktop/resized/rsz_explosion.png");
+        ImageIcon WI = new ImageIcon("src/Picture/rsz_explosion.png");
         fireImg = WI.getImage();
     }
 

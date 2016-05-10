@@ -26,17 +26,17 @@ public class Highscore extends JPanel {
 
 	private boolean DEBUG = false;
 	
-	FirebaseController fbc = new FirebaseController();
 	FirebaseUser fbU = new FirebaseUser();
-	HighScoreController hSC = new HighScoreController();
 	ArrayList<FirebaseUser> scoreList = new ArrayList<FirebaseUser>();
-
+	private String[] columnNames = {"Navn", "Score"};
+	private Object[][] data = {{"s144885", 500}, {"s144885", 400}, {"s144885", 300}, {"s144885", 200}, {"s144885", 5000}, {"s144885", 800} ,
+			{"s144885", 676}, {"s144885", 554}, {"s144885", 550}, {"s144885", 900}};
+	
+	
 	Mainpanel mp = new Mainpanel(10);
 	/**
 	 * Create the panel.
 	 */
-
-	HighscoreManager manage = new HighscoreManager();
 
 	public Highscore() {
 
@@ -53,28 +53,22 @@ public class Highscore extends JPanel {
 
 			}
 		});
-		btnNewButton.setIcon(new ImageIcon("150px-Back.png"));
+		btnNewButton.setIcon(new ImageIcon("src/Picture/150px-Back.png"));
 		btnNewButton.setBounds(0, 500, 111, 42);
 		add(btnNewButton);
 
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("BackgroundHighscore.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("src/Picture/BackgroundHighscore.jpg"));
 		lblNewLabel.setBounds(0, 0, 800, 600);
 		add(lblNewLabel);
 
 		String[] columnNames = {"Navn", "Score"};
 
-		
-		Object[][] data = {{"s144885", 500}, {"s144885", 400}, {"s144885", 300}, {"s144885", 200}, {"s144885", 5000}, {"s144885", 800} ,
-				{"s144885", 676}, {"s144885", 554}, {"s144885", 550}, {"s144885", 900}};
-		
-		
-		
-		
-		
+	
 		data[0][1] = 234;
 		data[0][0] = "james";
 		System.out.println(data[0][0]);
+		
 		
 		for(int i = 0; i<10;i++){
 			data[i][0] = "brugernan";
@@ -85,9 +79,6 @@ public class Highscore extends JPanel {
 			}
 		}
 		
-		
-		
-		final JTable table = new JTable(data, columnNames);
 		
 //		table.setPreferredScrollableViewportSize(new Dimension(500, 70));
 		table.setFillsViewportHeight(true);
@@ -117,6 +108,12 @@ public class Highscore extends JPanel {
 				}
 			});
 		}
+		
+
+	}
+	public JTable getJTable(){
+		final JTable table = new JTable(data, columnNames);
+		
 		table.setRowHeight(30);
 		table.setBackground(Color.ORANGE);
 		table.getTableHeader().setBackground(Color.BLUE);
@@ -125,15 +122,9 @@ public class Highscore extends JPanel {
 		scrollPane.setBounds(250, 150, 300, 328);
 		lblNewLabel.add(scrollPane, BorderLayout.CENTER);
 		
-
-		manage.addScore("Hadi",400);
-		manage.addScore("Anwar",220);	
-		manage.addScore("Fayad",100);
-		manage.addScore("Niclas",270);
 		
-//		System.out.println(manage.getHighscoreString());
 		
-		System.out.println("asd");
-		System.out.println("afaaa");
+		
+		return table;
 	}
 }

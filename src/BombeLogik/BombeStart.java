@@ -424,7 +424,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
     @Override
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        ImageIcon im = new ImageIcon("background.png");
+        ImageIcon im = new ImageIcon("src/Picture/background.png");
         Image BI = im.getImage();
         g2d.setColor(Color.black);
         g2d.fillRect(0, 0, BI.getWidth(this), 50);
@@ -455,7 +455,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
             case PLAYING:
                 START.setVisible(false);
 
-                ImageIcon PI = new ImageIcon("C:/Users/AnwarC/Desktop/asphalt.jpg");
+                ImageIcon PI = new ImageIcon("src/Picture/asphalt.jpg");
                 Image BPI = PI.getImage();
                 g2d.drawImage(BPI, 0, 50, this);
                 for (int i = 0; i < playerCount; i++) {

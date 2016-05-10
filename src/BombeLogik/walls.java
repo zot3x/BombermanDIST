@@ -19,7 +19,7 @@ public class walls {
     
     
     public walls(int x,int y, int h, int w){
-        ImageIcon WI = new ImageIcon("C:/Users/AnwarC/Desktop/resized/brownstone.png");
+        ImageIcon WI = new ImageIcon("src/Picture/brownstone.png");
         img = WI.getImage();
         this.x = x;
         this.y = y;

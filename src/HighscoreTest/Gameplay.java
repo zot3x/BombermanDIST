@@ -26,28 +26,28 @@ public class Gameplay extends JPanel {
 		
 		for(int i = 0; i<20; i++){
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("brownstone.PNG"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/brownstone.PNG"));
 			lblNewLabel_1.setBounds(i*40, 0, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 		}
 		
 		for(int i = 0; i<20; i++){
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("brownstone.PNG"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/brownstone.PNG"));
 			lblNewLabel_1.setBounds(i*40, 560, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 		}
 			
 		for(int i = 0; i<=13; i++){
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("brownstone.PNG"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/brownstone.PNG"));
 			lblNewLabel_1.setBounds(0, i*40, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 		}
 		
 		for(int i = 0; i<=13; i++){
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("brownstone.PNG"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/brownstone.PNG"));
 			lblNewLabel_1.setBounds(720, i*40, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 		}
@@ -55,7 +55,7 @@ public class Gameplay extends JPanel {
 		for (int i = 80; i<13*40; i=80+i){
 			for (int j = 80; j<18*40; j=80+j){
 				JLabel lblNewLabel_1 = new JLabel("New label");
-				lblNewLabel_1.setIcon(new ImageIcon("brownstone.PNG"));
+				lblNewLabel_1.setIcon(new ImageIcon("src/Picture/brownstone.PNG"));
 				lblNewLabel_1.setBounds(j, i, 40, 40);
 				lblNewLabel.add(lblNewLabel_1);
 				}
@@ -77,7 +77,7 @@ public class Gameplay extends JPanel {
 			
 			temp=r.nextInt(points.size())+1;
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("block.png"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/block.png"));
 			lblNewLabel_1.setBounds(points.get(temp-1).x, points.get(temp-1).y, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 			
@@ -95,7 +95,7 @@ public class Gameplay extends JPanel {
 			
 			temp=r.nextInt(points.size())+1;
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("block.png"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/block.png"));
 			lblNewLabel_1.setBounds(points.get(temp-1).x, points.get(temp-1).y, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 			
@@ -113,7 +113,7 @@ public class Gameplay extends JPanel {
 			
 			temp=r.nextInt(points.size())+1;
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("block.png"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/block.png"));
 			lblNewLabel_1.setBounds(points.get(temp-1).x, points.get(temp-1).y, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 			
@@ -138,7 +138,7 @@ public class Gameplay extends JPanel {
 			
 			temp=r.nextInt(points.size())+1;
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("block.png"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/block.png"));
 			lblNewLabel_1.setBounds(points.get(temp-1).x, points.get(temp-1).y, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 			
@@ -155,7 +155,7 @@ public class Gameplay extends JPanel {
 			
 			temp=r.nextInt(points.size())+1;
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("block.png"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/block.png"));
 			lblNewLabel_1.setBounds(points.get(temp-1).x, points.get(temp-1).y, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 			
@@ -171,7 +171,7 @@ public class Gameplay extends JPanel {
 			
 			temp=r.nextInt(points.size())+1;
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("block.png"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/block.png"));
 			lblNewLabel_1.setBounds(points.get(temp-1).x, points.get(temp-1).y, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 			
@@ -210,7 +210,7 @@ public class Gameplay extends JPanel {
 			
 			temp=r.nextInt(points.size())+1;
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("block.png"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/block.png"));
 			lblNewLabel_1.setBounds(points.get(temp-1).x, points.get(temp-1).y, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 			
@@ -234,7 +234,7 @@ public class Gameplay extends JPanel {
 			
 			temp=r.nextInt(points.size())+1;
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("block.png"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/block.png"));
 			lblNewLabel_1.setBounds(points.get(temp-1).x, points.get(temp-1).y, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 			
@@ -260,7 +260,7 @@ public class Gameplay extends JPanel {
 			
 			temp=r.nextInt(points.size())+1;
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("block.png"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/block.png"));
 			lblNewLabel_1.setBounds(points.get(temp-1).x, points.get(temp-1).y, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 			
@@ -293,7 +293,7 @@ public class Gameplay extends JPanel {
 			
 			temp=r.nextInt(points.size())+1;
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("block.png"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/block.png"));
 			lblNewLabel_1.setBounds(points.get(temp-1).x, points.get(temp-1).y, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 			
@@ -310,7 +310,7 @@ public class Gameplay extends JPanel {
 			
 			temp=r.nextInt(points.size())+1;
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("block.png"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/block.png"));
 			lblNewLabel_1.setBounds(points.get(temp-1).x, points.get(temp-1).y, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 			
@@ -327,14 +327,14 @@ public class Gameplay extends JPanel {
 		for(int i = 2; i<=20; i++){
 			if(i%2==0){
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("block.png"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/block.png"));
 			lblNewLabel_1.setBounds(i*40, 200, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 		}}
 		for(int i = 2; i<=20; i++){
 			if(i%2==0){
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("block.png"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/block.png"));
 			lblNewLabel_1.setBounds(i*40, 120, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 		}}
@@ -348,7 +348,7 @@ public class Gameplay extends JPanel {
 			
 			temp=r.nextInt(points.size())+1;
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon("block.png"));
+			lblNewLabel_1.setIcon(new ImageIcon("src/Picture/block.png"));
 			lblNewLabel_1.setBounds(points.get(temp-1).x, points.get(temp-1).y, 40, 40);
 			lblNewLabel.add(lblNewLabel_1);
 			
