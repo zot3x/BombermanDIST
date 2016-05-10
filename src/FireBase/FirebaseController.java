@@ -9,7 +9,7 @@ public class FirebaseController {
 
 		hSC = new HighScoreController();
 	}
-	public HighScoreController Highscore(){
+	public HighScoreController getHighscore(){
 
 		return hSC;
 	}

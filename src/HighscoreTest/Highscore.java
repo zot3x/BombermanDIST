@@ -79,19 +79,22 @@ public class Highscore extends JPanel {
 	public void updateTable(){
 		
 		try {
-			firebaseController.Highscore().getTop10Score(new FirebaseListener(){
+			firebaseController.getHighscore().getTop10Score(new FirebaseListener(){
 
 				@Override
 				public void top10(ArrayList<FirebaseUser> scoreList) {
+					String nameList = "";
+					for(int i = 0 ; i<scoreList.size() ; i++){
+						nameList = scoreList.get(i).Navn.toString();
+						System.out.println(nameList);
 					super.top10(scoreList);
 				}
 				
-			});
+			}});
 		} catch (FirebaseDataException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-
 	}
 }
