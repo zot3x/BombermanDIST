@@ -5,6 +5,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import FireBase.FirebaseController;
+import FireBase.FirebaseDataException;
+import FireBase.FirebaseListener;
+import FireBase.FirebaseUser;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -15,11 +18,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class Highscore extends JPanel {
 	
 	Mainpanel mp = new Mainpanel(10);
 	FirebaseController firebaseController;
+	FirebaseListener fbl;
 	String[] columnNames = {"Navn", "Score"};
 //	Object[][] data;
 	/**
@@ -27,6 +32,7 @@ public class Highscore extends JPanel {
 	 */
 	public Highscore(FirebaseController fireBaseController) {
 		this.firebaseController = fireBaseController;
+		updateTable();
 
 		setBounds(0, 0, 800, 600);
 		setLayout(null);
@@ -70,4 +76,22 @@ public class Highscore extends JPanel {
 		//		lblNewLabel.add(highscore);
 	}
 
+	public void updateTable(){
+		
+		try {
+			firebaseController.Highscore().getTop10Score(new FirebaseListener(){
+
+				@Override
+				public void top10(ArrayList<FirebaseUser> scoreList) {
+					super.top10(scoreList);
+				}
+				
+			});
+		} catch (FirebaseDataException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+	}
 }
