@@ -70,9 +70,7 @@ public class HighScoreController {
 	}
 	
 
-	public void updateUserList(ArrayList<FirebaseUser> updateUser){
-		
-		updateUser = 
-
-	}
+//	public void updateUserList(ArrayList<FirebaseUser> updateUser){	
+//		updateUser = getUserList();
+//	}
 }
