@@ -22,7 +22,7 @@ public class Mainpanel extends JFrame {
 
 	public JPanel contentPane;
 	Gameplay objgameplay = new Gameplay();
-	HighscorePanel objhighscore;
+	Highscore objhighscore;
 
 	/**
 	 * Launch the application.
@@ -44,7 +44,7 @@ public class Mainpanel extends JFrame {
 	 * Create the frame.
 	 */
 	public Mainpanel() {
-		objhighscore = new HighscorePanel();
+		objhighscore = new Highscore(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
@@ -90,6 +90,4 @@ public class Mainpanel extends JFrame {
 	{
 		
 	}
-	
-	
 }

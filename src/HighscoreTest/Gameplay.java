@@ -20,7 +20,7 @@ public class Gameplay extends JPanel {
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("asphalt.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("src/Picture/asphalt.jpg"));
 		lblNewLabel.setBounds(0, 0, 800, 600);
 		add(lblNewLabel);
 		
