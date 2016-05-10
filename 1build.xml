@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="Bomberman">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../eclipse/jee-mars/Eclipse.app/Contents/MacOS/"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="Bomberman.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="../../../Downloads/firebase-client-android-2.5.2.jar"/>
+        <pathelement location="../../../.p2/pool/plugins/org.apache.axis_1.4.0.v201411182030/lib/axis.jar"/>
+        <pathelement location="../../../.p2/pool/plugins/org.apache.commons.discovery_0.2.0.v201004190315/lib/commons-discovery-0.2.jar"/>
+        <pathelement location="../../../.p2/pool/plugins/javax.xml.rpc_1.1.0.v201209140446/lib/jaxrpc.jar"/>
+        <pathelement location="../../../.p2/pool/plugins/javax.xml.soap_1.2.0.v201005080501/lib/saaj.jar"/>
+        <pathelement location="../../../.p2/pool/plugins/javax.wsdl_1.6.2.v201012040545.jar"/>
+        <pathelement location="../../../.p2/pool/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"/>
+    </path>
+    <path id="run.BombeStart.classpath">
+        <pathelement location="../../../Downloads/firebase-client-android-2.5.2.jar"/>
+        <path refid="Bomberman.classpath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.xtend"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="Bomberman.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="BombeStart">
+        <java classname="sun.applet.AppletViewer" dir="." failonerror="true" fork="yes">
+            <arg line="BombeStart.html"/>
+            <classpath refid="run.BombeStart.classpath"/>
+        </java>
+    </target>
+    <target name="Main">
+        <java classname="FireBase.Main" failonerror="true" fork="yes">
+            <classpath refid="Bomberman.classpath"/>
+        </java>
+    </target>
+    <target name="Mainpanel">
+        <java classname="HighscoreTest.Mainpanel" failonerror="true" fork="yes">
+            <classpath refid="Bomberman.classpath"/>
+        </java>
+    </target>
+    <target name="test1">
+        <java classname="FireBase.test1" failonerror="true" fork="yes">
+            <classpath refid="Bomberman.classpath"/>
+        </java>
+    </target>
+</project>
