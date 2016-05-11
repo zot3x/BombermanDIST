@@ -4,16 +4,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.plaf.synth.SynthSpinnerUI;
-
 import FireBase.FirebaseController;
 import FireBase.FirebaseDataException;
 import FireBase.FirebaseListener;
 import FireBase.FirebaseUser;
-
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -30,9 +27,7 @@ public class Highscore extends JPanel {
 	Object[][] data = new Object[10][10];
 	ArrayList<String> nameList = new ArrayList<>();
 	ArrayList<Integer> pointList = new ArrayList<Integer>();
-	/**
-	 * Create the panel.
-	 */
+
 	public Highscore(FirebaseController fireBaseController) {
 		this.firebaseController = fireBaseController;
 		updateTable();
@@ -45,7 +40,6 @@ public class Highscore extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				mp = new Mainpanel();
-				//mp.repaint();
 				mp.setVisible(true);
 
 			}
@@ -61,7 +55,6 @@ public class Highscore extends JPanel {
 
 		final JTable table = new JTable(data, columnNames);
 
-		// table.setPreferredScrollableViewportSize(new Dimension(500, 70));
 		table.setFillsViewportHeight(true);
 		table.setCellSelectionEnabled(false);
 		table.setEnabled(false);
@@ -73,10 +66,6 @@ public class Highscore extends JPanel {
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(250, 150, 300, 328);
 		lblNewLabel.add(scrollPane, BorderLayout.CENTER);
-
-		// JLabel highscore = new JLabel("HIGHSCORE");
-		// highscore.setBounds(200,200,400,300);
-		// lblNewLabel.add(highscore);
 	}
 
 	public void updateTable(){
@@ -87,16 +76,13 @@ public class Highscore extends JPanel {
 				@Override
 				public void top10(ArrayList<FirebaseUser> scoreList) {
 
-					//sort list based on high score
 					super.top10(scoreList);
 
-					//get the top 10
 					for(int i = 0 ; i < 10 && i < scoreList.size() ; i++){
 						nameList.add(scoreList.get(i).Navn);
 						pointList.add(scoreList.get(i).Highscore);
 					}
 
-					//put data to data array, to show on the table
 					for(int s = 0 ; s < 10 && s < nameList.size() ; s++){
 						for(int j = 0; j < 1; j++){
 							data[s][j] = nameList.get(s);
@@ -107,8 +93,5 @@ public class Highscore extends JPanel {
 		} catch (FirebaseDataException e) {
 			e.printStackTrace();
 		}
-
-
-
 	}
 }
