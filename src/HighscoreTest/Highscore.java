@@ -3,6 +3,7 @@ package HighscoreTest;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import FireBase.FirebaseController;
 import FireBase.FirebaseDataException;
@@ -21,12 +22,14 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class Highscore extends JPanel {
-	
+
 	Mainpanel mp = new Mainpanel(10);
 	FirebaseController firebaseController;
 	FirebaseListener fbl;
-	String[] columnNames = {"Navn", "Score"};
-//	Object[][] data;
+	Object[] columnNames = {"Navn", "Score"};
+	Object[][] data = new Object[10][10];
+	ArrayList<String> nameList = new ArrayList<>();
+	ArrayList<Integer> pointList = new ArrayList<Integer>();
 	/**
 	 * Create the panel.
 	 */
@@ -56,9 +59,9 @@ public class Highscore extends JPanel {
 		lblNewLabel.setBounds(0, 0, 800, 600);
 		add(lblNewLabel);
 
-		final JTable table = new JTable();
+		final JTable table = new JTable(data, columnNames);
 
-		//		table.setPreferredScrollableViewportSize(new Dimension(500, 70));
+		// table.setPreferredScrollableViewportSize(new Dimension(500, 70));
 		table.setFillsViewportHeight(true);
 		table.setCellSelectionEnabled(false);
 		table.setEnabled(false);
@@ -71,30 +74,41 @@ public class Highscore extends JPanel {
 		scrollPane.setBounds(250, 150, 300, 328);
 		lblNewLabel.add(scrollPane, BorderLayout.CENTER);
 
-		//		JLabel highscore = new JLabel("HIGHSCORE");
-		//		highscore.setBounds(200,200,400,300);
-		//		lblNewLabel.add(highscore);
+		// JLabel highscore = new JLabel("HIGHSCORE");
+		// highscore.setBounds(200,200,400,300);
+		// lblNewLabel.add(highscore);
 	}
 
 	public void updateTable(){
-		
+
 		try {
 			firebaseController.getHighscore().getTop10Score(new FirebaseListener(){
 
 				@Override
 				public void top10(ArrayList<FirebaseUser> scoreList) {
-					String nameList = "";
-					for(int i = 0 ; i<scoreList.size() ; i++){
-						nameList = scoreList.get(i).Navn.toString();
-						System.out.println(nameList);
+
+					//sort list based on high score
 					super.top10(scoreList);
-				}
-				
-			}});
+
+					//get the top 10
+					for(int i = 0 ; i < 10 && i < scoreList.size() ; i++){
+						nameList.add(scoreList.get(i).Navn);
+						pointList.add(scoreList.get(i).Highscore);
+					}
+
+					//put data to data array, to show on the table
+					for(int s = 0 ; s < 10 && s < nameList.size() ; s++){
+						for(int j = 0; j < 1; j++){
+							data[s][j] = nameList.get(s);
+							data[s][j+1] = pointList.get(s);
+						}
+					}
+				}});
 		} catch (FirebaseDataException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
+
+
 	}
 }

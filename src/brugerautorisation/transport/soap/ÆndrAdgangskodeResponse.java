@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "\u00e6ndrAdgangskodeResponse", propOrder = {
     "_return"
 })
-public class Ã†ndrAdgangskodeResponse {
+public class ÆndrAdgangskodeResponse {
 
     @XmlElement(name = "return")
     protected Bruger _return;

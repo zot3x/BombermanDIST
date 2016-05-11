@@ -29,7 +29,6 @@ public class HighScoreController {
 			@Override
 			public void run() {
 
-				
 				userList.clear();
 				
 //				ArrayList<FirebaseUser> scoreList = new ArrayList<FirebaseUser>();

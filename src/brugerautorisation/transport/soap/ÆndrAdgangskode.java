@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
     "arg1",
     "arg2"
 })
-public class Ã†ndrAdgangskode {
+public class ÆndrAdgangskode {
 
     protected String arg0;
     protected String arg1;

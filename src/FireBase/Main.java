@@ -9,45 +9,45 @@ public class Main {
 
 	public static void main(String[] args) throws FirebaseDataException{
 		
-//		FirebaseController fbC = new FirebaseController();
-//		FirebaseListener fbl = new FirebaseListener();
-//		UserController uDAO = new UserController();
-//	
+		FirebaseController fbC = new FirebaseController();
+		FirebaseListener fbl = new FirebaseListener();
+		UserController uDAO = new UserController();
+	
 		HighScoreController hSC = new HighScoreController();
-////					uDAO.saveUser(new FirebaseUser("test6", "", 0));
-////					uDAO.saveUser(new FirebaseUser("test7", "", 0));
-////					uDAO.saveUser(new FirebaseUser("test8", "", 0));
-////					uDAO.saveUser(new FirebaseUser("test9", "", 0));
-////					uDAO.saveUser(new FirebaseUser("test10", "", 0));
+					uDAO.saveUser(new FirebaseUser("Favad11", "Favad44", 999999));
+					uDAO.saveUser(new FirebaseUser("Joe11", "Joee12", 12));
+					uDAO.saveUser(new FirebaseUser("lel", "leeel992", 111));
+					uDAO.saveUser(new FirebaseUser("mums", "meeen91", 344));
+					uDAO.saveUser(new FirebaseUser("test10", "rød03", 33));
 //					
 //
-		FirebaseListener fbl = new FirebaseListener()
-		{
-
-			@Override
-			public void top10(ArrayList<FirebaseUser> scoreList) {
-				String nameList = "asd";
+//		FirebaseListener fbl = new FirebaseListener()
+//		{
+//
+//			@Override
+//			public void top10(ArrayList<FirebaseUser> scoreList) {
+//				String nameList = "asd";
+////				for(int i = 0 ; i<scoreList.size() ; i++){
+////					System.out.println(scoreList.get(i).Navn);
+////				}
+////				System.out.println(">>>" + scoreList.get(2).Navn + "  " +  scoreList.get(2).Highscore);
 //				for(int i = 0 ; i<scoreList.size() ; i++){
-//					System.out.println(scoreList.get(i).Navn);
+//					nameList = scoreList.get(i).Navn.toString();
+//					System.out.println(nameList);
 //				}
-//				System.out.println(">>>" + scoreList.get(2).Navn + "  " +  scoreList.get(2).Highscore);
-				for(int i = 0 ; i<scoreList.size() ; i++){
-					nameList = scoreList.get(i).Navn.toString();
-					System.out.println(nameList);
-				}
-			}
-		};
-		try {
-			hSC.getTop10Score(fbl);
-		} catch (FirebaseDataException e) {
-		}
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+//			}
+//		};
+//		try {
+//			hSC.getTop10Score(fbl);
+//		} catch (FirebaseDataException e) {
+//		}
+//		try {
+//			Thread.sleep(1000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
 		
 //	
 //		System.out.println("klar");
