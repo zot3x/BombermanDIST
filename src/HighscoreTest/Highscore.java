@@ -3,7 +3,7 @@ package HighscoreTest;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.plaf.synth.SynthSpinnerUI;
+import javax.swing.table.TableColumn;
 import FireBase.FirebaseController;
 import FireBase.FirebaseDataException;
 import FireBase.FirebaseListener;
@@ -23,7 +23,7 @@ public class Highscore extends JPanel {
 	Mainpanel mp = new Mainpanel(10);
 	FirebaseController firebaseController;
 	FirebaseListener fbl;
-	Object[] columnNames = {"Navn", "Score"};
+	Object[] columnNames = {"#","Navn", "Score"};
 	Object[][] data = new Object[10][10];
 	ArrayList<String> nameList = new ArrayList<>();
 	ArrayList<Integer> pointList = new ArrayList<Integer>();
@@ -64,8 +64,12 @@ public class Highscore extends JPanel {
 		table.getTableHeader().setBackground(Color.BLUE);
 		table.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 14));
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(250, 150, 300, 328);
+		scrollPane.setBounds(240, 150, 300, 326);
 		lblNewLabel.add(scrollPane, BorderLayout.CENTER);
+		
+		TableColumn tm = table.getColumnModel().getColumn(0);
+	    tm.setCellRenderer(new ColumnRenderer(Color.BLUE, Color.BLACK));
+	    tm.setPreferredWidth(20);
 	}
 
 	public void updateTable(){
@@ -84,10 +88,9 @@ public class Highscore extends JPanel {
 					}
 
 					for(int s = 0 ; s < 10 && s < nameList.size() ; s++){
-						for(int j = 0; j < 1; j++){
-							data[s][j] = nameList.get(s);
-							data[s][j+1] = pointList.get(s);
-						}
+						data[s][1] = nameList.get(s);
+						data[s][2] = pointList.get(s);
+						data [s][0] = s+1;					
 					}
 				}});
 		} catch (FirebaseDataException e) {
