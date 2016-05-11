@@ -90,7 +90,7 @@ public class Highscore extends JPanel {
 					for(int s = 0 ; s < 10 && s < nameList.size() ; s++){
 						data[s][1] = nameList.get(s);
 						data[s][2] = pointList.get(s);
-						data [s][0] = s+1;					
+						data[s][0] = s+1;					
 					}
 				}});
 		} catch (FirebaseDataException e) {
