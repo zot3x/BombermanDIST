@@ -50,14 +50,13 @@ public class ServerPacketHandler implements Runnable {
 		case INVALID:
 			break;
 		case CONNECT:
-			packetToHandle = new PacketConnect(data);
+			packetToHandle = new PacketClientConnect(data);
 			System.out.println("[" + address + ":" + port + "] "
 					+ packet.getAddress() + " has connected...");
 			NetworkPlayer player = new NetworkPlayer(address, port);
-			//ServerPacketListener.addConnection(player,
-			//		(PacketConnect) packetToHandle);
 			int id = ServerPacketListener.addConnection(player);
-			packetToHandle.setID = id;
+			Packet responsePacket = new PacketConnect(id, )
+			packetToHandle = id;
 			break;
 		case DISCONNECT:
 			packetToHandle = new PacketDisconnect(data);

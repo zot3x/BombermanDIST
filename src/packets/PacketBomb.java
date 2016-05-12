@@ -4,7 +4,7 @@ public class PacketBomb extends Packet {
 	
 	private int playerID;
 	private int gameID;
-	private int x, y;
+	private int direction;
 	
 	
 	public PacketBomb(byte[] data) {
@@ -12,8 +12,7 @@ public class PacketBomb extends Packet {
 		 String[] dataArray = readData(data).split(",");
 	        this.playerID = Integer.parseInt(dataArray[0]);
 	        this.gameID = Integer.parseInt(dataArray[1]);
-	        this.x = Integer.parseInt(dataArray[2]);
-	        this.y = Integer.parseInt(dataArray[3]);
+	        this.direction = Integer.parseInt(dataArray[2]);
 	}
 	
 	public PacketBomb(int id, int x, int y) {

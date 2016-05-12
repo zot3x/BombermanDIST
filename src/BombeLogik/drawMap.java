@@ -197,4 +197,8 @@ public class drawMap {
 		return toSend;
 	}
 	
+	public int getRekt(){
+		int rekt = 0;
+		return rekt;
+	}
 }

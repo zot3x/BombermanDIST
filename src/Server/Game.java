@@ -4,13 +4,13 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 
 import ServerBombeLogik.Accounts;
-import ServerBombeLogik.BombeStart;
+import ServerBombeLogik.BombeServerStart;
 
 public class Game {
 
 	int id;
 	ArrayList<NetworkPlayer> players;
-	BombeStart game;
+	BombeServerStart game;
 
 	public Game(ArrayList<NetworkPlayer> players, int id) {
 		//this.game = game;
@@ -60,11 +60,11 @@ public class Game {
 		this.players = players;
 	}
 
-	public BombeStart getGame() {
+	public BombeServerStart getGame() {
 		return game;
 	}
 
-	public void setGame(BombeStart game) {
+	public void setGame(BombeServerStart game) {
 		this.game = game;
 	}
 	

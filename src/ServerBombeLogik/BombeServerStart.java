@@ -34,85 +34,65 @@ import javax.swing.ImageIcon;
  *
  * @author AnwarC
  */
-public class BombeStart implements Runnable {
+public class BombeServerStart {
 
-	drawMap map;
+	private drawMap map;
 	Bruger logIn;
 	int numPlayers;
 	DatagramSocket socket;
 	ArrayList<NetworkPlayer> players;
-	
+
 	public enum State {
 		MENU, PLAYING, DEATH, LOGIN, HIGHSCORE, LOGGEDIN
 	}
 
 	State state;
-	
-	public BombeStart(int numPlayers, DatagramSocket socket, ArrayList<NetworkPlayer> players){
+
+	public BombeServerStart(int numPlayers, DatagramSocket socket,
+			ArrayList<NetworkPlayer> players) {
 		this.numPlayers = numPlayers;
 		this.socket = socket;
 		this.players = players;
-		
+
 		Thread thread = new Thread(new Runnable() {
 			public void run() {
 				map = new drawMap(numPlayers);
-				
-				//do some stuff here
-				
-				
-				while(true){
+
+				// do some stuff here
+
+				while (true) {
 					tick();
-					
+
 					try {
-						Thread.sleep(33,33); //gotta be approx 30 times a sec
+						Thread.sleep(25); // gotta be approx 30 times a sec
 					} catch (InterruptedException ex) {
-						Logger.getLogger(BombeStart.class.getName()).log(Level.SEVERE,
-								null, ex);
+						Logger.getLogger(BombeServerStart.class.getName()).log(
+								Level.SEVERE, null, ex);
 					}
 				}
-				
+
 			}
 		});
 		thread.start();
 	}
 
-	/*
-	 * starter det tråden.
-	 */
-/*	public void start(int players) {
-=======
-	public void start() {
->>>>>>> branch 'master' of https://github.com/zot3x/BombermanDIST.git
-		Thread thread = new Thread(this);
-		thread.start();
-	}
-*/
-
-	@Override
-	public void run() {
-		int counter = 0;
-		while (true) {
-			if(counter == 5){ // how often do we want to send out gamestate??
-				tick();
-				counter = 0;
-			}
-			counter++;
-			
-			try {
-				Thread.sleep(17);
-			} catch (InterruptedException ex) {
-				Logger.getLogger(BombeStart.class.getName()).log(Level.SEVERE,
-						null, ex);
-			}
-
-		}
-
-	}
-	
-	private void tick(){
-		//Send out gamestate
+	private void tick() {
+		// Send out gamestate
 		String Gamestate = getSendableData();
 		new ServerPacketSender(socket, Gamestate.getBytes(), players);
+
+		// Check if players alive
+
+		int alive = 0;
+		for (int i = 0; i < map.gamers.size(); i++) {
+			if (map.gamers.get(i).playerAlive() == 1) {
+				alive++;
+			}
+		}
+		if (alive < 2) {
+			map.gameOver();
+			state = State.LOGGEDIN;
+		}
 	}
 
 	public void paint() {
@@ -121,14 +101,12 @@ public class BombeStart implements Runnable {
 
 		case MENU:
 
-
-
 			break;
 		case LOGIN:
 
 			break;
 		case PLAYING:
-			
+
 			int alive = 0;
 			for (int i = 0; i < map.gamers.size(); i++) {
 				if (map.gamers.get(i).playerAlive() == 1) {
@@ -153,16 +131,15 @@ public class BombeStart implements Runnable {
 		}
 
 	}
-	
-	public String getSendableData(){
+
+	public String getSendableData() {
 		String toSend;
-		
+
 		toSend = map.getSendableData();
 		return toSend;
 	}
-	
-	
-	public drawMap getMap(){
+
+	public drawMap getMap() {
 		return map;
 	}
 

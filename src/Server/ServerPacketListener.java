@@ -80,36 +80,7 @@ public class ServerPacketListener implements Runnable {
 
 	}
 
-	private void playerGameQueue(NetworkPlayer player) {
-		players.add(player);
-		//int size = players.size();
-	}
-
 	  public static int addConnection(NetworkPlayer player) {
-//	        boolean alreadyConnected = false;
-/*	        for (NetworkPlayer p : players) {
-	            if (player.getIpAddress() == (p.getIpAddress())) {
-	                if (!(p.getIpAddress() == null)) {
-	                    p.getIpAddress() = player.ipAddress;
-	                }
-	                if (p.port == -1) {
-	                    p.port = player.port;
-	                }
-	                alreadyConnected = true;
-	            } else {
-	                // tell to the current connected players that there is a new
-	                // player
-	                sendData(packet.getData(), p.ipAddress, p.port);
-
-	                // relay to the new player that the currently connect player
-	                // exists
-	                packet = new PacketConnect(p.getUsername(), p.x, p.y);
-	                sendData(packet.getData(), player.ipAddress, player.port);
-	            }
-	        }
-	        if (!alreadyConnected) {
-	            this.connectedPlayers.add(player);
-	        }  */
 		  int id = 0;
 		  newPlayers.add(player);
 		  id = newPlayers.size();

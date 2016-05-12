@@ -6,7 +6,7 @@
 package BombeLogik;
 
 import Client.ClientPacketListener;
-import ServerBombeLogik.drawMap;
+import BombeLogik.drawMap;
 import brugerautorisation.transport.soap.Bruger;
 import brugerautorisation.transport.soap.Brugeradmin;
 import brugerautorisation.transport.soap.BrugeradminImplService;
@@ -44,7 +44,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 	private Image i;
 	private Graphics tempI;
 	guiComp guicomp = new guiComp();
-	drawMap map;
+	private drawMap map;
 	Bruger logIn;
 	boolean check = false;
 	private final Set<Integer> pressed = new HashSet<>();
@@ -343,5 +343,4 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 	public drawMap getMap(){
 		return map;
 	}
-
 }
