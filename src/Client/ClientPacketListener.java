@@ -20,7 +20,7 @@ import BombeLogik.BombeStart;
 public class ClientPacketListener extends Thread {
 
     private InetAddress ipAddress;
-    private DatagramSocket socket;
+    private static DatagramSocket socket;
     private BombeStart game;
 
     public ClientPacketListener(BombeStart game) {
@@ -49,6 +49,10 @@ public class ClientPacketListener extends Thread {
             }
             new ClientPacketHandler(socket, packet).run();
         }
+    }
+    
+    public static DatagramSocket getSocket(){
+    	return socket;
     }
 
  /*   private void handlePacket(byte[] data, InetAddress address, int port) {

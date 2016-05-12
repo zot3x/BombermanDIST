@@ -48,6 +48,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 	boolean check = false;
 	private final Set<Integer> pressed = new HashSet<>();
 	private static Applet instance;
+	private static int gameID;
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -329,5 +330,14 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 	public Applet getInstance(){
 		return instance;
 	}
+	
+	public void setGameID(int gameID){
+		this.gameID = gameID;
+	}
+	
+	public static int getGameID(){
+		return gameID;
+	}
+	
 
 }

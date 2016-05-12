@@ -14,6 +14,10 @@ import java.awt.Rectangle;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import packets.PacketMove;
+import Client.ClientPacketListener;
+import Client.ClientPacketSender;
+
 /**
  *
  * @author AnwarC
@@ -65,8 +69,16 @@ public class KeyPress extends KeyAdapter {
 		}
 		this.player = play;
 	}
+	
+	private String getMovableData(int keycode){
+		String toSend = String.valueOf(player.getID()) + String.valueOf(BombeStart.getGameID()) + String.valueOf(keycode);
+		return toSend;
+	}
 
 	public void keyPressed(int Keycode) {
+		
+		new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes()).run();
+		
 		if (player.playerAlive() == 1) {
 			Accounts tempA = new Accounts(player.getX(), player.getY());
 			boolean goodMove = true;

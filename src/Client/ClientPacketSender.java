@@ -16,13 +16,16 @@ public class ClientPacketSender implements Runnable{
 		private int port;
 		private InetAddress address;
 		
-		ClientPacketSender(DatagramSocket socket, byte[] data){
+		public ClientPacketSender(DatagramSocket socket, byte[] data){
 			this.socket = socket;
 			this.data = data;
 			this.address = socket.getInetAddress();
 			this.port = socket.getPort();
-			
 			}
+		
+		ClientPacketSender(int id, int gameID, int keycode){
+			
+		}
 		
 		public void run() {
 			readySendPacket();
