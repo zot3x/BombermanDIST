@@ -35,24 +35,17 @@ public class BombeStart implements Runnable {
 
 	drawMap map;
 	Bruger logIn;
-	int numPlayers;
 
 	public enum State {
 		MENU, PLAYING, DEATH, LOGIN, HIGHSCORE, LOGGEDIN
 	}
 
 	State state;
-	
-	public BombeStart(int numPlayers){
-		this.numPlayers = numPlayers;
-		
-		
-	}
 
 	/*
 	 * starter det tråden.
 	 */
-	public void start(int players) {
+	public void start() {
 		Thread thread = new Thread(this);
 		thread.start();
 	}
@@ -61,7 +54,7 @@ public class BombeStart implements Runnable {
 	@Override
 	public void run() {
 
-		drawMap map = new drawMap(players);
+
 		
 		int counter = 0;
 		while (true) {
@@ -83,13 +76,8 @@ public class BombeStart implements Runnable {
 	}
 	
 	private void tick(){
-		String Gamestate = getSendableData();
-		new ServerPacketSender()
+		//Send out gamestate
 	}
-
-
-
-
 
 	public void paint() {
 
@@ -104,6 +92,7 @@ public class BombeStart implements Runnable {
 
 			break;
 		case PLAYING:
+			
 			int alive = 0;
 			for (int i = 0; i < map.gamers.size(); i++) {
 				if (map.gamers.get(i).playerAlive() == 1) {
