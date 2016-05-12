@@ -31,125 +31,16 @@ import javax.swing.ImageIcon;
  *
  * @author AnwarC
  */
-public class BombeStart implements Runnable, KeyListener {
+public class BombeStart implements Runnable {
 
-	/*
-	 * Variabler vi bruger i projectet, jeg gøre projectet ren senere, så de
-	 * ligger i deres egne klassr.
-	 */
-	static final int HEIGHT = 800;
-	static final int WIDTH = 650;
-	static final String Title = "Bombeman";
-	private Image i;
-	private Graphics tempI;
-	guiComp guicomp = new guiComp();
 	drawMap map;
 	Bruger logIn;
-	boolean check = false;
-	private final Set<Integer> pressed = new HashSet<>();
-	private static Applet instance;
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-	}
-
-	@Override
-	public synchronized void keyPressed(KeyEvent e) {
-		if (state == State.PLAYING) {
-			pressed.add(e.getKeyCode());
-			ArrayList<Integer> keysPressed = new ArrayList<>(pressed);
-			for (int i = 0; i < keysPressed.size(); i++) {
-				map.newKeyInput(keysPressed.get(i));
-			}
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		pressed.remove(e.getKeyCode());
-	}
-
-	/*
-	 * game states.
-	 */
 	public enum State {
 		MENU, PLAYING, DEATH, LOGIN, HIGHSCORE, LOGGEDIN
 	}
 
 	State state;
-
-	@Override
-	public void init() {
-		BombeStart instance = this;
-		setSize(HEIGHT, WIDTH);
-		setFocusable(true);
-		addKeyListener(this);
-		state = state.MENU;
-		add(guicomp.getLogBut());
-		add(guicomp.getHighS());
-		add(guicomp.getLogText());
-		add(guicomp.getPass());
-		add(guicomp.getCheckLog());
-		add(guicomp.getWrongC());
-		add(guicomp.getSTART2());
-		add(guicomp.getSTART3());
-		add(guicomp.getSTART4());
-		add(guicomp.getHighScore());
-
-		guicomp.getHighScore().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				state = State.HIGHSCORE;
-
-			}
-		});
-
-		guicomp.getSTART2().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				state = State.PLAYING;
-				map = new drawMap(2);
-
-			}
-		});
-		guicomp.getSTART3().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				state = State.PLAYING;
-				map = new drawMap(3);
-
-			}
-		});
-		guicomp.getSTART4().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				state = State.PLAYING;
-				map = new drawMap(4);
-
-			}
-		});
-
-		guicomp.getCheckLog().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				check = true;
-				BrugeradminImplService service = new BrugeradminImplService();
-				Brugeradmin port = service.getBrugeradminImplPort();
-
-				logIn = port.hentBruger(guicomp.getBrugerText(),
-						guicomp.getBrugerPassText());
-
-				if (logIn.getEfternavn() != null) {
-					state = state.LOGGEDIN;
-				}
-
-			}
-
-		});
-			
-		new ClientPacketListener(instance).run();
-	}
 
 	/*
 	 * starter det tråden.
@@ -159,29 +50,11 @@ public class BombeStart implements Runnable, KeyListener {
 		thread.start();
 	}
 
-	/*
-	 * run metoden, har loggiken inde i, igen det skal fjernes og laves i dens
-	 * egen klasse.
-	 */
+
 	@Override
 	public void run() {
 
-		guicomp.getHighS().setVisible(true);
-		guicomp.getLogBut().setVisible(true);
-		guicomp.getLogBut().addActionListener((ActionEvent e) -> {
-			state = state.LOGIN;
-			guicomp.getHighS().setVisible(false);
-			guicomp.getLogBut().setVisible(false);
-		});
 
-		guicomp.getHighS().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				state = state.HIGHSCORE;
-				guicomp.getHighS().setVisible(false);
-				guicomp.getLogBut().setVisible(false);
-			}
-		});
 		
 		int counter = 0;
 		while (true) {
@@ -191,7 +64,6 @@ public class BombeStart implements Runnable, KeyListener {
 			}
 			counter++;
 			
-			repaint();
 			try {
 				Thread.sleep(17);
 			} catch (InterruptedException ex) {
@@ -207,66 +79,20 @@ public class BombeStart implements Runnable, KeyListener {
 		//Send out gamestate
 	}
 
-	@Override
-	public void stop() {
-	}
 
-	/*
-	 * Får billederne til at se flydende ud. der skal ikke rettes noget her,
-	 * den skal bare være der :)
-	 */
-	@Override
-	public void update(Graphics g) {
-		if (i == null) {
-			i = createImage(this.getSize().width, this.getSize().height);
-			tempI = i.getGraphics();
-		}
 
-		tempI.setColor(getBackground());
-		tempI.fillRect(0, 0, this.getSize().width, this.getSize().height);
 
-		tempI.setColor(getForeground());
-		paint(tempI);
 
-		g.drawImage(i, 0, 0, this);
-	}
-
-	@Override
-	public void destroy() {
-	}
-
-	/*
-	 * paint metoden, loggiken inde her, er bare hvor boksene skal være, o.s.v.
-	 * Det kan vel godt flyttes til dens egen klasse.
-	 */
-	@Override
-	public void paint(Graphics g) {
-		Graphics2D g2d = (Graphics2D) g;
-		ImageIcon im = new ImageIcon("Src/ImagesBombe/background.png");
-		Image BI = im.getImage();
-		g2d.setColor(Color.black);
-		g2d.fillRect(0, 0, BI.getWidth(this), 50);
-		g2d.setColor(Color.white);
-		String tittle = "BOMBEMAN AF ANWAR,NICKLAS,FAYAD OG HADI - DIST PROJECT";
-		g2d.drawString(tittle, 200, 30);
+	public void paint() {
 
 		switch (state) {
 
 		case MENU:
 
-			g2d.drawImage(BI, 0, 50, this);
+
 
 			break;
 		case LOGIN:
-			if (check == true) {
-				guicomp.getWrongC().setVisible(true);
-			}
-
-			g2d.drawImage(BI, 0, 50, this);
-
-			guicomp.getLogText().setVisible(true);
-			guicomp.getPass().setVisible(true);
-			guicomp.getCheckLog().setVisible(true);
 
 			break;
 		case PLAYING:
@@ -280,36 +106,13 @@ public class BombeStart implements Runnable, KeyListener {
 				map.gameOver();
 				state = State.LOGGEDIN;
 			}
-			guicomp.getSTART2().setVisible(false);
-			guicomp.getSTART3().setVisible(false);
-			guicomp.getSTART4().setVisible(false);
-			guicomp.getHighScore().setVisible(false);
-
-			map.drawplayingMap(g2d);
 			break;
 		case DEATH:
 
 			break;
 		case HIGHSCORE:
-			guicomp.getSTART2().setVisible(false);
-			guicomp.getSTART3().setVisible(false);
-			guicomp.getSTART4().setVisible(false);
-			guicomp.getHighScore().setVisible(false);
 			break;
 		case LOGGEDIN:
-			check = false;
-			guicomp.getLogText().setVisible(false);
-			guicomp.getPass().setVisible(false);
-			guicomp.getCheckLog().setVisible(false);
-			g2d.setColor(Color.black);
-			guicomp.getWrongC().setVisible(false);
-
-			g2d.drawImage(BI, 0, 50, this);
-			guicomp.getSTART2().setVisible(true);
-			guicomp.getSTART3().setVisible(true);
-			guicomp.getSTART4().setVisible(true);
-			guicomp.getHighScore().setVisible(true);
-
 			break;
 
 		default:
@@ -325,9 +128,6 @@ public class BombeStart implements Runnable, KeyListener {
 		return toSend;
 	}
 	
-	public Applet getInstance(){
-		return instance;
-	}
 	
 	public drawMap getMap(){
 		return map;
