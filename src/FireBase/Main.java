@@ -14,7 +14,7 @@ public class Main {
 		UserController uDAO = new UserController();
 	
 		HighScoreController hSC = new HighScoreController();
-					uDAO.saveUser(new FirebaseUser("Hadi", "HadiWow11", 50000));
+					uDAO.saveUser(new FirebaseUser("Hadsi", "HadiWow11", 30000));
 //					uDAO.saveUser(new FirebaseUser("Joe11", "Joee12", 12));
 //					uDAO.saveUser(new FirebaseUser("lel", "leeel992", 111));
 //					uDAO.saveUser(new FirebaseUser("mums", "meeen91", 344));
