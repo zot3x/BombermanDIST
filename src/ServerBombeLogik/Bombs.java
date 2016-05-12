@@ -264,7 +264,7 @@ public class Bombs {
 		return firebombs;
 	}
 
-	public void drawFire(Graphics2D g2d, randomBoxes[] rand,
+	public void drawFire(randomBoxes[] rand,
 			ArrayList<Accounts> acc) {
 		for (int i = 0; i < firebombs.size(); i++) {
 			if (firebombs.get(i).getFireMode() == true) {
@@ -292,8 +292,6 @@ public class Bombs {
 					}
 
 				}
-				g2d.drawImage(firebombs.get(i).getFireImg(), firebombs.get(i)
-						.getFireX(), firebombs.get(i).getFireY(), null);
 				firebombs.get(i).setFireTime();
 				firebombs.get(i).fireOff();
 

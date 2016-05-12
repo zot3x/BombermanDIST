@@ -29,41 +29,15 @@ public class KeyPress extends KeyAdapter {
 	private initMap map;
 
 	public KeyPress(Accounts play, initMap Map) {
-		int playerID = play.getID();
 		this.map = Map;
-		switch (playerID) {
-		case 0:
-			input1 = KeyEvent.VK_A;
-			input2 = KeyEvent.VK_S;
-			input3 = KeyEvent.VK_D;
-			input4 = KeyEvent.VK_W;
-			input5 = KeyEvent.VK_Q;
-			break;
-		case 1:
-			input1 = KeyEvent.VK_F;
-			input2 = KeyEvent.VK_G;
-			input3 = KeyEvent.VK_H;
-			input4 = KeyEvent.VK_T;
-			input5 = KeyEvent.VK_R;
-			break;
-		case 2:
-			input1 = KeyEvent.VK_J;
-			input2 = KeyEvent.VK_K;
-			input3 = KeyEvent.VK_L;
-			input4 = KeyEvent.VK_I;
-			input5 = KeyEvent.VK_U;
-			break;
-		case 3:
-			input1 = KeyEvent.VK_LEFT;
-			input2 = KeyEvent.VK_DOWN;
-			input3 = KeyEvent.VK_RIGHT;
-			input4 = KeyEvent.VK_UP;
-			input5 = KeyEvent.VK_SPACE;
-			break;
-		default:
-			break;
-		}
+		input1 = KeyEvent.VK_LEFT;
+		input2 = KeyEvent.VK_DOWN;
+		input3 = KeyEvent.VK_RIGHT;
+		input4 = KeyEvent.VK_UP;
+		input5 = KeyEvent.VK_SPACE;
+
 		this.player = play;
+
 	}
 
 	public void keyPressed(int Keycode) {
@@ -87,8 +61,7 @@ public class KeyPress extends KeyAdapter {
 
 						boolean validMove = true;
 						if (map.getRandBox()[i].getSprunger() == 0) {
-							validMove = validMoveRand(tempA,
-									map.getRandBox()[i]);
+							validMove = validMoveRand(tempA, map.getRandBox()[i]);
 						}
 						if (validMove == false) {
 							goodMove = false;
@@ -120,8 +93,7 @@ public class KeyPress extends KeyAdapter {
 
 						boolean validMove = true;
 						if (map.getRandBox()[i].getSprunger() == 0) {
-							validMove = validMoveRand(tempA,
-									map.getRandBox()[i]);
+							validMove = validMoveRand(tempA, map.getRandBox()[i]);
 						}
 						if (validMove == false) {
 							goodMove = false;
@@ -154,8 +126,7 @@ public class KeyPress extends KeyAdapter {
 
 						boolean validMove = true;
 						if (map.getRandBox()[i].getSprunger() == 0) {
-							validMove = validMoveRand(tempA,
-									map.getRandBox()[i]);
+							validMove = validMoveRand(tempA, map.getRandBox()[i]);
 						}
 						if (validMove == false) {
 							goodMove = false;
@@ -188,8 +159,7 @@ public class KeyPress extends KeyAdapter {
 
 						boolean validMove = true;
 						if (map.getRandBox()[i].getSprunger() == 0) {
-							validMove = validMoveRand(tempA,
-									map.getRandBox()[i]);
+							validMove = validMoveRand(tempA, map.getRandBox()[i]);
 						}
 						if (validMove == false) {
 							goodMove = false;
@@ -259,9 +229,7 @@ public class KeyPress extends KeyAdapter {
 		int accy = acc.getCentrumY();
 
 		for (int i = 0; i < map.getBombposA().length; i++) {
-			if (accx > map.getBombposA()[i].x
-					&& accx < map.getBombposA()[i].x + 40
-					&& accy > map.getBombposA()[i].y
+			if (accx > map.getBombposA()[i].x && accx < map.getBombposA()[i].x + 40 && accy > map.getBombposA()[i].y
 					&& accy < map.getBombposA()[i].y + 40) {
 				foundPoint = i;
 				i = 20000;
