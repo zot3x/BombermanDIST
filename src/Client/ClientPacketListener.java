@@ -15,7 +15,7 @@ import packets.PacketGameState;
 import packets.PacketMove;
 import packets.Packet.Packets;
 import Server.NetworkPlayer;
-import bombelogik.BombeStart;
+import BombeLogik.BombeStart;
 
 public class ClientPacketListener extends Thread {
 

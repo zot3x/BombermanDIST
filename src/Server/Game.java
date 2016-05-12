@@ -3,7 +3,7 @@ package Server;
 import java.net.InetAddress;
 import java.util.ArrayList;
 
-import bombelogik.BombeStart;
+import BombeLogik.BombeStart;
 
 public class Game {
 

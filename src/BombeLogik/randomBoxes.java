@@ -20,7 +20,7 @@ public class randomBoxes {
 	private int x, y;
 	private final int height = 40;
 	private final int width = 40;
-	private boolean sprunget = false;
+	private byte sprunget = 0;
 	private Image img;
 
 	public randomBoxes(int x, int y) {
@@ -55,7 +55,7 @@ public class randomBoxes {
 		return new Rectangle(getX(), getY(), width, height);
 	}
 
-	public boolean getSprunger() {
+	public byte getSprunger() {
 		return this.sprunget;
 	}
 
@@ -72,13 +72,13 @@ public class randomBoxes {
 			bonus = 2;
 		}
 
-		this.sprunget = true;
+		this.sprunget = 1;
 
 		return bonus;
 	}
 
 	public String getSendableData(){
-		String toSend = String.valueOf(x) + String.valueOf(y) + String.valueOf(sprunget);
+		String toSend = String.valueOf((short)x) + String.valueOf((short)y) + String.valueOf(sprunget);
 		
 		return toSend;
 	}

@@ -67,7 +67,7 @@ public class KeyPress extends KeyAdapter {
 	}
 
 	public void keyPressed(int Keycode) {
-		if (player.playerAlive() == true) {
+		if (player.playerAlive() == 1) {
 			Accounts tempA = new Accounts(player.getX(), player.getY());
 			boolean goodMove = true;
 
@@ -86,7 +86,7 @@ public class KeyPress extends KeyAdapter {
 					for (int i = 0; i < map.getRandBox().length; i++) {
 
 						boolean validMove = true;
-						if (map.getRandBox()[i].getSprunger() == false) {
+						if (map.getRandBox()[i].getSprunger() == 0) {
 							validMove = validMoveRand(tempA,
 									map.getRandBox()[i]);
 						}
@@ -119,7 +119,7 @@ public class KeyPress extends KeyAdapter {
 					for (int i = 0; i < map.getRandBox().length; i++) {
 
 						boolean validMove = true;
-						if (map.getRandBox()[i].getSprunger() == false) {
+						if (map.getRandBox()[i].getSprunger() == 0) {
 							validMove = validMoveRand(tempA,
 									map.getRandBox()[i]);
 						}
@@ -153,7 +153,7 @@ public class KeyPress extends KeyAdapter {
 					for (int i = 0; i < map.getRandBox().length; i++) {
 
 						boolean validMove = true;
-						if (map.getRandBox()[i].getSprunger() == false) {
+						if (map.getRandBox()[i].getSprunger() == 0) {
 							validMove = validMoveRand(tempA,
 									map.getRandBox()[i]);
 						}
@@ -187,7 +187,7 @@ public class KeyPress extends KeyAdapter {
 					for (int i = 0; i < map.getRandBox().length; i++) {
 
 						boolean validMove = true;
-						if (map.getRandBox()[i].getSprunger() == false) {
+						if (map.getRandBox()[i].getSprunger() == 0) {
 							validMove = validMoveRand(tempA,
 									map.getRandBox()[i]);
 						}

@@ -14,8 +14,8 @@ import javax.swing.ImageIcon;
 /**
  ********** REAL HERE**********************************
  *
- * Denne klasse har en masse get og set, som de andre klasser, men den har også
- * noget logik med hvor ilden skal være.
+ * Denne klasse har en masse get og set, som de andre klasser, men den har ogsÃ¥
+ * noget logik med hvor ilden skal vÃ¦re.
  *
  */
 public class Bombs {
@@ -25,7 +25,7 @@ public class Bombs {
 	private Image img;
 	private ArrayList<fireBomb> firebombs = new ArrayList<>();
 	private int timeBomb = 0;
-	private boolean laidDown = false;
+	private byte laidDown = 0;
 	private final int bombCowndown = 250;
 	private int bombOwner;
 	private int bombSize = 1;
@@ -101,15 +101,15 @@ public class Bombs {
 		for (int i = 0; i < this.firebombs.size(); i++) {
 			firebombs.get(i).setFireTime(0);
 		}
-		this.laidDown = true;
+		this.laidDown = 1;
 	}
 
 	public void bombExplode() {
-		this.laidDown = false;
+		this.laidDown = 0;
 
 	}
 
-	public boolean getbombstatus() {
+	public byte getbombstatus() {
 		return this.laidDown;
 	}
 
@@ -142,7 +142,7 @@ public class Bombs {
 					for (int r = 0; r < randplace.length; r++) {
 						if (randplace[r].getBounds1().intersects(
 								firebombs.get(counter).getBounds1())) {
-							if (randplace[r].getSprunger() == false) {
+							if (randplace[r].getSprunger() == 0) {
 								randplace[r].BOOM();
 
 								for (int l = 0; l < fireSize - i1 - 1; l++) {
@@ -173,7 +173,7 @@ public class Bombs {
 					for (int r = 0; r < randplace.length; r++) {
 						if (randplace[r].getBounds1().intersects(
 								firebombs.get(counter).getBounds1())) {
-							if (randplace[r].getSprunger() == false) {
+							if (randplace[r].getSprunger() == 0) {
 								randplace[r].BOOM();
 
 								for (int l = 0; l < fireSize - i2 - 1; l++) {
@@ -204,7 +204,7 @@ public class Bombs {
 					for (int r = 0; r < randplace.length; r++) {
 						if (randplace[r].getBounds1().intersects(
 								firebombs.get(counter).getBounds1())) {
-							if (randplace[r].getSprunger() == false) {
+							if (randplace[r].getSprunger() == 0) {
 								randplace[r].BOOM();
 
 								for (int l = 0; l < fireSize - i3 - 1; l++) {
@@ -234,7 +234,7 @@ public class Bombs {
 					for (int r = 0; r < randplace.length; r++) {
 						if (randplace[r].getBounds1().intersects(
 								firebombs.get(counter).getBounds1())) {
-							if (randplace[r].getSprunger() == false) {
+							if (randplace[r].getSprunger() == 0) {
 								randplace[r].BOOM();
 								for (int l = 0; l < fireSize - i4 - 1; l++) {
 									counter++;
@@ -271,7 +271,7 @@ public class Bombs {
 				for (int k = 0; k < rand.length; k++) {
 					if (firebombs.get(i).getBounds1()
 							.intersects(rand[k].getBounds1())
-							&& rand[k].getSprunger() == false) {
+							&& rand[k].getSprunger() == 0) {
 						int j = rand[k].BOOM();
 						if (j == 1) {
 							System.err.println("hej");
@@ -283,7 +283,7 @@ public class Bombs {
 					for (int m = 0; m < acc.size(); m++) {
 						if (firebombs.get(i).getBounds1()
 								.intersects(acc.get(m).getBounds1())
-								&& acc.get(m).getAliveInfo() == true) {
+								&& acc.get(m).getAliveInfo() == 1) {
 							acc.get(m).killPlayer();
 							if (acc.get(m).getID() != this.bombOwner) {
 								playerKilled++;
@@ -314,7 +314,7 @@ public class Bombs {
 	}
 
 	public String getSendableData(){
-		String toSend = String.valueOf(x) + String.valueOf(y) + String.valueOf(laidDown);
+		String toSend = String.valueOf((short)x) + String.valueOf((short)y) + String.valueOf(laidDown);
 		for(int i = 0; i < firebombs.size(); i++){
 			toSend = toSend + String.valueOf(firebombs.get(i).getFireX());
 			toSend = toSend + String.valueOf(firebombs.get(i).getFireY());

@@ -47,7 +47,7 @@ public class drawMap {
 		Image BPI = PI.getImage();
 		g2d.drawImage(BPI, 0, 50, null);
 		for (int i = 0; i < gamers.size(); i++) {
-			if (gamers.get(i).playerAlive() == true) {
+			if (gamers.get(i).playerAlive() == 1) {
 				g2d.drawImage(gamers.get(i).getIcon(), gamers.get(i).getX(),
 						gamers.get(i).getY(), null);
 			}
@@ -78,8 +78,8 @@ public class drawMap {
 					null);
 		}
 		for (int i = 0; i < map.getRandBox().length; i++) {
-			boolean boxSprunget = map.getRandBox()[i].getSprunger();
-			if (boxSprunget == false) {
+			byte boxSprunget = map.getRandBox()[i].getSprunger();
+			if (boxSprunget == 0) {
 				g2d.drawImage(map.getRandBox()[i].getImg(),
 						map.getRandBox()[i].getX(), map.getRandBox()[i].getY(),
 						null);
@@ -101,10 +101,10 @@ public class drawMap {
 			}
 		}
 		for (int i = 0; i < laidbombs.size(); i++) {
-			if (laidbombs.get(i).getbombstatus() == true) {
+			if (laidbombs.get(i).getbombstatus() == 1) {
 				int J = laidbombs.get(i).getBombOwner();
 				for (int m = 0; m < gamers.get(J).getavaBomb(); m++) {
-					if (gamers.get(J).getBomber().get(m).getbombstatus() == true) {
+					if (gamers.get(J).getBomber().get(m).getbombstatus() == 1) {
 						g2d.drawImage(
 								gamers.get(J).getBomber().get(m).getImg(),
 								gamers.get(J).getBomber().get(m).getX(), gamers
@@ -128,11 +128,11 @@ public class drawMap {
 
 	private void checkFireBombs(ArrayList<Bombs> laidbombs, Point[] bombposA) {
 		for (int i = 0; i < laidbombs.size(); i++) {
-			if (laidbombs.get(i).getbombstatus() == true) {
+			if (laidbombs.get(i).getbombstatus() == 1) {
 				laidbombs.get(i).setTimeBomb();
 				laidbombs.get(i).bombBoom(bombposA, map.getRandBox());
 			}
-			if (laidbombs.get(i).getbombstatus() == false) {
+			if (laidbombs.get(i).getbombstatus() == 0) {
 				laidbombs.remove(i);
 				i = i - 1;
 
@@ -183,4 +183,18 @@ public class drawMap {
 
 	}
 
+	
+	public String getSendableData(){
+		String toSend = null;
+		
+		for(int i = 0; i<4; i++){
+			toSend = toSend + gamers.get(i).getSendableData();
+		}
+		toSend = toSend + ",";
+		for(int i = 0; i<map.getRandBox().length; i++){
+		toSend = toSend + map.getRandBox()[i].getSendableData();
+		}
+		return toSend;
+	}
+	
 }

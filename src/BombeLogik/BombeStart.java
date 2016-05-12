@@ -273,7 +273,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 		case PLAYING:
 			int alive = 0;
 			for (int i = 0; i < map.gamers.size(); i++) {
-				if (map.gamers.get(i).playerAlive() == true) {
+				if (map.gamers.get(i).playerAlive() == 1) {
 					alive++;
 				}
 			}
@@ -322,8 +322,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 	public String getSendableData(){
 		String toSend;
 		
-		//iterate all getSendableData and add to the toSend string
-		
+		toSend = map.getSendableData();
 		return toSend;
 	}
 	

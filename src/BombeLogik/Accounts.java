@@ -28,7 +28,7 @@ public class Accounts {
 	private int centrumX = x + 15;
 	private int centrumY = y + 15;
 	private int laidBombs = 0;
-	private boolean alive;
+	private byte alive = 0;
 	private KeyPress inputs;
 	private int playerkilled = 0;
 	private int boxesboom = 0;
@@ -102,7 +102,7 @@ public class Accounts {
 		this.ID = ID;
 		setIcon();
 		bomber.add(new Bombs(ID));
-		this.alive = true;
+		this.alive = 1;
 		this.inputs = new KeyPress(this, map);
 	}
 
@@ -164,7 +164,7 @@ public class Accounts {
 	public int getLaidBombs() {
 		int boml = 0;
 		for (int i = 0; i < bomber.size(); i++) {
-			if (bomber.get(i).getbombstatus() == true) {
+			if (bomber.get(i).getbombstatus() == 1) {
 				boml++;
 			}
 		}
@@ -172,12 +172,12 @@ public class Accounts {
 		return boml;
 	}
 
-	public boolean playerAlive() {
+	public Byte playerAlive() {
 		return this.alive;
 	}
 
 	public void killPlayer() {
-		this.alive = false;
+		this.alive = 0;
 	}
 
 	public int getID() {
@@ -194,7 +194,7 @@ public class Accounts {
 	}
 
 	public void newLife() {
-		this.alive = true;
+		this.alive = 1;
 	}
 
 	public void setPowerUp(int powerUp) {
@@ -230,13 +230,14 @@ public class Accounts {
 		// TODO this.powerUp = something.
 	}
 
-	public boolean getAliveInfo() {
+	public Byte getAliveInfo() {
 		return this.alive;
 	}
 	
 	public String getSendableData(){
-		String toSend = String.valueOf(x) + String.valueOf(y) + String.valueOf(ID);
+		String toSend = String.valueOf((short)x) + String.valueOf((short)y) + String.valueOf((byte)ID + String.valueOf(alive)) ;
 		
+		toSend = toSend + bomber.get(0).getSendableData();
 		return toSend;
 	}
 

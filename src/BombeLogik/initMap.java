@@ -147,20 +147,8 @@ public class initMap {
 		return laidbombs;
 	}
 
-	// niclas doing shit
-	private Byte getPointArrayAsBytes() {
-		String currentbombposA = null;
-		for (int i = 0; i < bombposA.length; i++) {
-			if (i == 0) {
-				currentbombposA = bombposA[i].toString();
-			} else {
-				currentbombposA = currentbombposA + bombposA[i].toString();
-			}
-		}
-	}
 
-	public Byte getByteInitMap(){
-	  Byte bytesToReturn = bombposA
-  }
+
+
 
 }
