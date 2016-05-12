@@ -1,3 +1,4 @@
+
 package brugerautorisation.transport.soap;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -29,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "\u00e6ndrAdgangskodeResponse", propOrder = {
     "_return"
 })
-public class ÆndrAdgangskodeResponse {
+public class Ã†ndrAdgangskodeResponse {
 
     @XmlElement(name = "return")
     protected Bruger _return;

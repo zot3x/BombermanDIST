@@ -32,7 +32,8 @@ public class UserController {
 					public void onDataChange(DataSnapshot dataSnapshot) {
 						Firebase ref = fb.child("Users").child(fbU.studieNummer);
 						ref.setValue(fbU);
-						System.out.println("Gemt i DB >>>>>>> " + dataSnapshot.getChildrenCount());
+//						System.out.println("Gemt i DB >>>>>>> " + dataSnapshot.getChildrenCount());
+						System.out.println("Gemt i DB >>>>>>>");
 					}
 
 					@Override

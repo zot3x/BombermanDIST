@@ -1,3 +1,4 @@
+
 package brugerautorisation.transport.soap;
 
 import javax.xml.bind.JAXBElement;
@@ -23,11 +24,11 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _∆ndrAdgangskodeResponse_QNAME = new QName("http://soap.transport.brugerautorisation/", "\u00e6ndrAdgangskodeResponse");
+    private final static QName _√ÜndrAdgangskodeResponse_QNAME = new QName("http://soap.transport.brugerautorisation/", "\u00e6ndrAdgangskodeResponse");
     private final static QName _HentBrugerResponse_QNAME = new QName("http://soap.transport.brugerautorisation/", "hentBrugerResponse");
     private final static QName _SendEmail_QNAME = new QName("http://soap.transport.brugerautorisation/", "sendEmail");
     private final static QName _SendGlemtAdgangskodeEmail_QNAME = new QName("http://soap.transport.brugerautorisation/", "sendGlemtAdgangskodeEmail");
-    private final static QName _∆ndrAdgangskode_QNAME = new QName("http://soap.transport.brugerautorisation/", "\u00e6ndrAdgangskode");
+    private final static QName _√ÜndrAdgangskode_QNAME = new QName("http://soap.transport.brugerautorisation/", "\u00e6ndrAdgangskode");
     private final static QName _GetEkstraFeltResponse_QNAME = new QName("http://soap.transport.brugerautorisation/", "getEkstraFeltResponse");
     private final static QName _HentBruger_QNAME = new QName("http://soap.transport.brugerautorisation/", "hentBruger");
     private final static QName _SendEmailResponse_QNAME = new QName("http://soap.transport.brugerautorisation/", "sendEmailResponse");
@@ -71,8 +72,8 @@ public class ObjectFactory {
      * Create an instance of {@link √ÜndrAdgangskode }
      * 
      */
-    public ∆ndrAdgangskode create∆ndrAdgangskode() {
-        return new ∆ndrAdgangskode();
+    public √ÜndrAdgangskode create√ÜndrAdgangskode() {
+        return new √ÜndrAdgangskode();
     }
 
     /**
@@ -95,8 +96,8 @@ public class ObjectFactory {
      * Create an instance of {@link √ÜndrAdgangskodeResponse }
      * 
      */
-    public ∆ndrAdgangskodeResponse create∆ndrAdgangskodeResponse() {
-        return new ∆ndrAdgangskodeResponse();
+    public √ÜndrAdgangskodeResponse create√ÜndrAdgangskodeResponse() {
+        return new √ÜndrAdgangskodeResponse();
     }
 
     /**
@@ -168,8 +169,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://soap.transport.brugerautorisation/", name = "\u00e6ndrAdgangskodeResponse")
-    public JAXBElement<∆ndrAdgangskodeResponse> create∆ndrAdgangskodeResponse(∆ndrAdgangskodeResponse value) {
-        return new JAXBElement<∆ndrAdgangskodeResponse>(_∆ndrAdgangskodeResponse_QNAME, ∆ndrAdgangskodeResponse.class, null, value);
+    public JAXBElement<√ÜndrAdgangskodeResponse> create√ÜndrAdgangskodeResponse(√ÜndrAdgangskodeResponse value) {
+        return new JAXBElement<√ÜndrAdgangskodeResponse>(_√ÜndrAdgangskodeResponse_QNAME, √ÜndrAdgangskodeResponse.class, null, value);
     }
 
     /**
@@ -204,8 +205,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://soap.transport.brugerautorisation/", name = "\u00e6ndrAdgangskode")
-    public JAXBElement<∆ndrAdgangskode> create∆ndrAdgangskode(∆ndrAdgangskode value) {
-        return new JAXBElement<∆ndrAdgangskode>(_∆ndrAdgangskode_QNAME, ∆ndrAdgangskode.class, null, value);
+    public JAXBElement<√ÜndrAdgangskode> create√ÜndrAdgangskode(√ÜndrAdgangskode value) {
+        return new JAXBElement<√ÜndrAdgangskode>(_√ÜndrAdgangskode_QNAME, √ÜndrAdgangskode.class, null, value);
     }
 
     /**

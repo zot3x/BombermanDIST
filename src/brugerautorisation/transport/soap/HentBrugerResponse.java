@@ -1,3 +1,4 @@
+
 package brugerautorisation.transport.soap;
 
 import javax.xml.bind.annotation.XmlAccessType;

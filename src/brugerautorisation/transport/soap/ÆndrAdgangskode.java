@@ -1,3 +1,4 @@
+
 package brugerautorisation.transport.soap;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -32,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
     "arg1",
     "arg2"
 })
-public class ÆndrAdgangskode {
+public class Ã†ndrAdgangskode {
 
     protected String arg0;
     protected String arg1;
