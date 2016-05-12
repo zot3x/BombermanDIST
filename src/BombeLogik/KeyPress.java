@@ -33,40 +33,14 @@ public class KeyPress extends KeyAdapter {
 	private initMap map;
 
 	public KeyPress(Accounts play, initMap Map) {
-		int playerID = play.getID();
 		this.map = Map;
-		switch (playerID) {
-		case 0:
-			input1 = KeyEvent.VK_A;
-			input2 = KeyEvent.VK_S;
-			input3 = KeyEvent.VK_D;
-			input4 = KeyEvent.VK_W;
-			input5 = KeyEvent.VK_Q;
-			break;
-		case 1:
-			input1 = KeyEvent.VK_F;
-			input2 = KeyEvent.VK_G;
-			input3 = KeyEvent.VK_H;
-			input4 = KeyEvent.VK_T;
-			input5 = KeyEvent.VK_R;
-			break;
-		case 2:
-			input1 = KeyEvent.VK_J;
-			input2 = KeyEvent.VK_K;
-			input3 = KeyEvent.VK_L;
-			input4 = KeyEvent.VK_I;
-			input5 = KeyEvent.VK_U;
-			break;
-		case 3:
+
 			input1 = KeyEvent.VK_LEFT;
 			input2 = KeyEvent.VK_DOWN;
 			input3 = KeyEvent.VK_RIGHT;
 			input4 = KeyEvent.VK_UP;
 			input5 = KeyEvent.VK_SPACE;
-			break;
-		default:
-			break;
-		}
+
 		this.player = play;
 	}
 	
