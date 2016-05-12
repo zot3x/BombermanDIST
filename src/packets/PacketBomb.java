@@ -24,7 +24,7 @@ public class PacketBomb extends Packet {
 
 	@Override
 	public byte[] getData() {
-		return ("8" + this.playerID + "," + this.gameID + "," + this.x + "," + this.y).getBytes();
+		return ("8" + this.playerID + "," + this.gameID + "," + this.direction).getBytes();
 	}
 
 	public int getPlayerID() {
@@ -43,20 +43,7 @@ public class PacketBomb extends Packet {
 		this.gameID = gameID;
 	}
 
-	public int getX() {
-		return x;
+	public int getDirection() {
+		return direction;
 	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
-	}
-
 }

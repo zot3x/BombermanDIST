@@ -80,14 +80,15 @@ public class ServerPacketListener implements Runnable {
 
 	}
 
-	  public static int addConnection(NetworkPlayer player) {
-		  int id = 0;
+	  public static int[] addConnection(NetworkPlayer player) {
+		  int data[] = new int[2];
 		  newPlayers.add(player);
-		  id = newPlayers.size();
+		  data[0] = newPlayers.size();
+		  data[1] = gameID;
 		  if(newPlayers.size() == 4){
 			  startNewGame();
 		  }
-		  return id;
+		  return data;
 	    }
 
 	    public static void removeConnection(PacketDisconnect packet) {
@@ -117,21 +118,6 @@ public class ServerPacketListener implements Runnable {
 	        }
 	        return null;
 	    }
-
-	    public void sendData(byte[] data, InetAddress ipAddress, int port) {
-	           DatagramPacket packet = new DatagramPacket(data, data.length, ipAddress, port);
-	            try {
-	                socket.send(packet);
-	            } catch (IOException e) {
-	                e.printStackTrace();
-	            }
-	    }
-
-	    public void sendDataToAllClients(byte[] data, ArrayList<NetworkPlayer> players) {
-	        for (NetworkPlayer player : players) {
-	            sendData(data, player.getIpAddress(), player.getPort());
-	        }
-	    }
 	    
 	    public static void handleMove(PacketMove packet, InetAddress address) {
 	    	Game game = findGame(packet.getGameID());
@@ -145,7 +131,7 @@ public class ServerPacketListener implements Runnable {
 	    public static void handleBomb(PacketBomb packet, InetAddress address) {
 	    	Game game = findGame(packet.getGameID());
 	    	if(!(game == null)){
-	    		int playerID = packet.getID();
+	    		int playerID = packet.getPlayerID();
 	    		int direction = packet.getDirection();
 	    		game.MovePlayerOrSetBomb(playerID, direction);
 	    	}
@@ -158,10 +144,6 @@ public class ServerPacketListener implements Runnable {
 	    		}
 	    	}
 			return null;
-	    }
-	    
-	    public static void handleBomb(PacketBomb packet){
-	    	
 	    }
 
 	    public static void startNewGame(){

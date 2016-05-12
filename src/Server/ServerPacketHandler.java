@@ -54,9 +54,9 @@ public class ServerPacketHandler implements Runnable {
 			System.out.println("[" + address + ":" + port + "] "
 					+ packet.getAddress() + " has connected...");
 			NetworkPlayer player = new NetworkPlayer(address, port);
-			int id = ServerPacketListener.addConnection(player);
-			Packet responsePacket = new PacketConnect(id, )
-			packetToHandle = id;
+			int[] responseData = ServerPacketListener.addConnection(player);
+			Packet responsePacket = new PacketConnect(responseData[0], responseData[1]);
+			new ServerPacketSender(responsePacket,);
 			break;
 		case DISCONNECT:
 			packetToHandle = new PacketDisconnect(data);
@@ -70,7 +70,7 @@ public class ServerPacketHandler implements Runnable {
 			ServerPacketListener.handleMove((PacketMove) packetToHandle, address);
 		case BOMB:
 			packetToHandle = new PacketBomb(data);
-			ServerPacketListener.handleBomb((PacketBomb) packetToHandle);
+			ServerPacketListener.handleBomb((PacketBomb) packetToHandle, address);
 		case READY:
 		}
 	}
