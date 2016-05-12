@@ -47,7 +47,7 @@ public class ClientPacketListener extends Thread {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            new ClientPacketHandler(socket, packet).run();
+            new ClientPacketHandler(socket, packet, game).run();
         }
     }
     

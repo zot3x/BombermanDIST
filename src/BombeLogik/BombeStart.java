@@ -6,6 +6,7 @@
 package BombeLogik;
 
 import Client.ClientPacketListener;
+import ServerBombeLogik.drawMap;
 import brugerautorisation.transport.soap.Bruger;
 import brugerautorisation.transport.soap.Brugeradmin;
 import brugerautorisation.transport.soap.BrugeradminImplService;
@@ -339,5 +340,8 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 		return gameID;
 	}
 	
+	public drawMap getMap(){
+		return map;
+	}
 
 }

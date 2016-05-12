@@ -5,6 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
+import BombeLogik.BombeStart;
 import Server.NetworkPlayer;
 import Server.ServerPacketListener;
 import packets.*;
@@ -17,13 +18,15 @@ public class ClientPacketHandler implements Runnable{
 	private boolean response = false;
 	byte[] data = null;
 	private Packet packetToHandle;
+	private BombeStart game;
 	
 	private InetAddress address;
 	private int port;
 	
-	public ClientPacketHandler(DatagramSocket socket, DatagramPacket packet){
+	public ClientPacketHandler(DatagramSocket socket, DatagramPacket packet, BombeStart game){
 		this.socket = socket;
 		this.packet = packet;
+		this.game = game;
 		this.address = socket.getInetAddress();
 		this.port = socket.getPort();
 	}
@@ -65,7 +68,7 @@ public class ClientPacketHandler implements Runnable{
 	}
 	
 	public void handleGameState(PacketGameState gameState){
-    	//do stuff
+    	game.getMap();
 		
     }
 }
