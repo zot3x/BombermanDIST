@@ -328,5 +328,9 @@ public class BombeStart implements Runnable, KeyListener {
 	public Applet getInstance(){
 		return instance;
 	}
+	
+	public drawMap getMap(){
+		return map;
+	}
 
 }

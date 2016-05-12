@@ -112,7 +112,11 @@ public class ServerPacketListener implements Runnable {
 	        }  */
 		  int id = 0;
 		  newPlayers.add(player);
-		  return  id = newPlayers.size();
+		  int id = newPlayers.size();
+		  if(newPlayers.size() == 4){
+			  startNewGame();
+		  }
+		  return id;
 	    }
 
 	    public static void removeConnection(PacketDisconnect packet) {
@@ -159,24 +163,12 @@ public class ServerPacketListener implements Runnable {
 	    }
 	    
 	    public static void handleMove(PacketMove packet, InetAddress address) {
-	    	//if(!( findGame(packet.getGameID()) == null)){
 	    	Game game = findGame(packet.getGameID());
 	    	if(!(game == null)){
 	    		int playerID = packet.getID();
 	    		int direction = packet.getDirection();
-	    		//move player
-	    	}
-	    	//}
-	    //	NetworkPlayer player = getNetworkPlayer(packet);
-	     //   if (player != null) {    
-	       // 	if(validMove()){
-	        		//player.setX(packet.getX());
-	        		//player.setY(packet.getY());
-	        //		packet.writeData(this);
-	      //  	}
-	       // }
-	    	
-	    	
+	    		game.MovePlayer(playerID, direction);
+	    	}   	
 	    }
 	    
 	    private static Game findGame(int gameID){

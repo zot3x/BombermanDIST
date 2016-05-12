@@ -12,7 +12,7 @@ public class PacketStartGame extends Packet {
 
 	@Override
 	public byte[] getData() {
-		 return ("2" + this.playerID).getBytes();
+		 return ("6" + this.playerID).getBytes();
 	}
 
 }

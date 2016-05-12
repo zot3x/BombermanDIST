@@ -3,7 +3,8 @@ package Server;
 import java.net.InetAddress;
 import java.util.ArrayList;
 
-import BombeLogik.BombeStart;
+import ServerBombeLogik.Accounts;
+import ServerBombeLogik.BombeStart;
 
 public class Game {
 
@@ -35,6 +36,12 @@ public class Game {
 			}
 		}
 		return false;
+	}
+	
+	public void MovePlayer(int playerID, int direction){
+		ArrayList<Accounts> gamers = game.getMap().getGamers();
+		Accounts gamer = gamers.get(playerID);
+		gamer.newKey(direction);
 	}
 
 	public int getId() {

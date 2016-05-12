@@ -57,7 +57,7 @@ public class ServerPacketHandler implements Runnable {
 			//ServerPacketListener.addConnection(player,
 			//		(PacketConnect) packetToHandle);
 			int id = ServerPacketListener.addConnection(player);
-			packetToHandle.setID = 
+			packetToHandle.setID = id;
 			break;
 		case DISCONNECT:
 			packetToHandle = new PacketDisconnect(data);
