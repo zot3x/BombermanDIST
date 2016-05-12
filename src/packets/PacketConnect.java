@@ -1,23 +1,23 @@
 package packets;
 
-import Client.ClientPacketListener;
-import Client.GameServer;
-
 public class PacketConnect extends Packet {
 
+	private int numPlayers;
     private int id;
     private int x, y;
 
     public PacketConnect(byte[] data) {
         super(00);
         String[] dataArray = readData(data).split(",");
-        this.id = Integer.parseInt(dataArray[0]);
-        this.x = Integer.parseInt(dataArray[1]);
-        this.y = Integer.parseInt(dataArray[2]);
+        this.numPlayers = Integer.parseInt(dataArray[0]);
+        this.id = Integer.parseInt(dataArray[1]);
+        this.x = Integer.parseInt(dataArray[2]);
+        this.y = Integer.parseInt(dataArray[3]);
     }
 
-    public PacketConnect(int id, int x, int y) {
+    public PacketConnect(int numPlayers, int id, int x, int y) {
         super(00);
+        this.numPlayers = numPlayers;
         this.id = id;
         this.x = x;
         this.y = y;

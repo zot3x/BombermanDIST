@@ -1,10 +1,5 @@
 package packets;
 
-import java.util.ArrayList;
-
-import Client.ClientPacketListener;
-import Client.GameServer;
-
 public class PacketGameState extends Packet {
 
 	short[] gamersX = new short[4];

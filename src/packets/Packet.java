@@ -1,8 +1,5 @@
 package packets;
 
-import Client.ClientPacketListener;
-import Client.GameServer;
-
 public abstract class Packet {
 
 //    private byte packetID;

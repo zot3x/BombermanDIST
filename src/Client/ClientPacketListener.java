@@ -85,6 +85,7 @@ public class ClientPacketListener extends Thread {
         System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getUsername()
                 + " has joined the game...");
         //add player to game
+        
     }
     
     public static void handleGameState(PacketGameState gameState){

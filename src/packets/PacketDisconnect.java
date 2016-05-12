@@ -2,10 +2,6 @@ package packets;
 
 import java.net.InetAddress;
 
-import Client.ClientPacketListener;
-import Client.GameServer;
-
-
 public class PacketDisconnect extends Packet {
 
     private int id;

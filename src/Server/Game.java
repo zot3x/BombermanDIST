@@ -36,6 +36,30 @@ public class Game {
 		}
 		return false;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public ArrayList<NetworkPlayer> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(ArrayList<NetworkPlayer> players) {
+		this.players = players;
+	}
+
+	public BombeStart getGame() {
+		return game;
+	}
+
+	public void setGame(BombeStart game) {
+		this.game = game;
+	}
 	
 	
 

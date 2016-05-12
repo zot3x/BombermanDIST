@@ -1,8 +1,5 @@
 package packets;
 
-import Client.ClientPacketListener;
-import Client.GameServer;
-
 public class PacketStartGame extends Packet {
 	
 	private int playerID;

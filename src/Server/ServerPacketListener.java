@@ -21,7 +21,7 @@ public class ServerPacketListener implements Runnable {
 	private static ArrayList<NetworkPlayer> players = new ArrayList<NetworkPlayer>();
 	private static ArrayList<NetworkPlayer> newPlayers = new ArrayList<NetworkPlayer>();
 	private static ArrayList<Game> gamesRunning = new ArrayList<Game>();
-	//private map
+	private static int gameID = 0;
 	
 	
 	public ServerPacketListener() {
@@ -85,7 +85,7 @@ public class ServerPacketListener implements Runnable {
 		//int size = players.size();
 	}
 
-	  public static int addConnection(NetworkPlayer player, PacketConnect packet) {
+	  public static int addConnection(NetworkPlayer player) {
 //	        boolean alreadyConnected = false;
 /*	        for (NetworkPlayer p : players) {
 	            if (player.getIpAddress() == (p.getIpAddress())) {
@@ -111,19 +111,25 @@ public class ServerPacketListener implements Runnable {
 	            this.connectedPlayers.add(player);
 	        }  */
 		  int id = 0;
-		  
-		  return id;
+		  newPlayers.add(player);
+		  return  id = newPlayers.size();
 	    }
 
 	    public static void removeConnection(PacketDisconnect packet) {
-	    //    packet.writeData(this);
-	    	NetworkPlayer player = getNetworkPlayer(packet.getAddress());
+	    	removeNetworkPlayer(packet.getAddress());
 	    }
 	    
 	    public static void removeNetworkPlayer(InetAddress ip){
 	    	for (NetworkPlayer player : players) {
 	    		if(player.getIpAddress() == ip){
 	    			players.remove(player);
+	    			break;
+	    		}
+	    	}
+	    	for(NetworkPlayer player : newPlayers){
+	    		if(player.getIpAddress() == ip){
+	    			newPlayers.remove(player);
+	    			break;
 	    		}
 	    	}
 	    }
@@ -152,7 +158,15 @@ public class ServerPacketListener implements Runnable {
 	        }
 	    }
 	    
-	    public static void handleMove(PacketMove packet) {
+	    public static void handleMove(PacketMove packet, InetAddress address) {
+	    	//if(!( findGame(packet.getGameID()) == null)){
+	    	Game game = findGame(packet.getGameID());
+	    	if(!(game == null)){
+	    		int playerID = packet.getID();
+	    		int direction = packet.getDirection();
+	    		//move player
+	    	}
+	    	//}
 	    //	NetworkPlayer player = getNetworkPlayer(packet);
 	     //   if (player != null) {    
 	       // 	if(validMove()){
@@ -161,13 +175,35 @@ public class ServerPacketListener implements Runnable {
 	        //		packet.writeData(this);
 	      //  	}
 	       // }
+	    	
+	    	
+	    }
+	    
+	    private static Game findGame(int gameID){
+	    	for(Game game : gamesRunning){
+	    		if(game.getId() == gameID){
+	    			return game;
+	    		}
+	    	}
+			return null;
 	    }
 	    
 	    public static void handleBomb(PacketBomb packet){
 	    	
 	    }
 
-	    public void startNewGame(){
-	    	Game game = new Game()
+	    public static void startNewGame(){
+	    Game game = new Game(newPlayers, gameID);
+	    gamesRunning.add(game);
+	    newPlayers.removeAll(newPlayers);
+	    gameID++;
+	    }
+	    
+	    public static void removeGame(int gameID){
+	    	for(Game game: gamesRunning){
+	    		if(game.getId() == gameID){
+	    			gamesRunning.remove(game);
+	    		}
+	    	}
 	    }
 }

@@ -1,8 +1,5 @@
 package packets;
 
-import Client.ClientPacketListener;
-import Client.GameServer;
-
 public class PacketClientConnect extends Packet {
 
     private int id;

@@ -68,7 +68,7 @@ public class ServerPacketHandler implements Runnable {
 			break;
 		case MOVE:
 			packetToHandle = new PacketMove(data);
-			ServerPacketListener.handleMove((PacketMove) packetToHandle);
+			ServerPacketListener.handleMove((PacketMove) packetToHandle, address);
 		case BOMB:
 			packetToHandle = new PacketBomb(data);
 			ServerPacketListener.handleBomb((PacketBomb) packetToHandle);
