@@ -18,9 +18,9 @@ public class ServerPacketListener implements Runnable {
 	private DatagramPacket packet;
 	private byte[] buffer;
 	private InetAddress hostAddress;
-	private ArrayList<NetworkPlayer> players = new ArrayList<NetworkPlayer>();
-	private ArrayList<NetworkPlayer> newPlayers = new ArrayList<NetworkPlayer>();
-	private ArrayList<Game> gamesRunning = new ArrayList<Game>();
+	private static ArrayList<NetworkPlayer> players = new ArrayList<NetworkPlayer>();
+	private static ArrayList<NetworkPlayer> newPlayers = new ArrayList<NetworkPlayer>();
+	private static ArrayList<Game> gamesRunning = new ArrayList<Game>();
 	//private map
 	
 	
@@ -85,7 +85,7 @@ public class ServerPacketListener implements Runnable {
 		//int size = players.size();
 	}
 
-	  public static void addConnection(NetworkPlayer player, PacketConnect packet) {
+	  public static int addConnection(NetworkPlayer player, PacketConnect packet) {
 //	        boolean alreadyConnected = false;
 /*	        for (NetworkPlayer p : players) {
 	            if (player.getIpAddress() == (p.getIpAddress())) {
@@ -110,17 +110,29 @@ public class ServerPacketListener implements Runnable {
 	        if (!alreadyConnected) {
 	            this.connectedPlayers.add(player);
 	        }  */
+		  int id = 0;
+		  
+		  return id;
 	    }
 
 	    public static void removeConnection(PacketDisconnect packet) {
 	    //    packet.writeData(this);
+	    	NetworkPlayer player = getNetworkPlayer(packet.getAddress());
+	    }
+	    
+	    public static void removeNetworkPlayer(InetAddress ip){
+	    	for (NetworkPlayer player : players) {
+	    		if(player.getIpAddress() == ip){
+	    			players.remove(player);
+	    		}
+	    	}
 	    }
 
-	    public NetworkPlayer getNetworkPlayer(InetAddress ip) {
+	    public static NetworkPlayer getNetworkPlayer(InetAddress ip) {
 	        for (NetworkPlayer player : players) {
-	//            if (/**/) {
+	            if (player.getIpAddress() == ip) {
 	                return player;
-	  //          }
+	            }
 	        }
 	        return null;
 	    }

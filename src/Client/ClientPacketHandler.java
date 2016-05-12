@@ -52,9 +52,8 @@ public class ClientPacketHandler implements Runnable{
 			packetToHandle = new PacketConnect(data);
 			System.out.println("[" + address + ":" + port + "] "
 					+ packet.getAddress() + " has connected...");
-			NetworkPlayer player = new NetworkPlayer(address, port);
-		//	ClientPacketListener.addConnection(player,
-			//		(PacketConnect) packetToHandle);
+		//	NetworkPlayer player = new NetworkPlayer(address, port);
+		//	ClientPacketListener.addConnection(player, (PacketConnect) packetToHandle);
 			break;
 		case GAMESTATE:
 			packetToHandle = new PacketGameState(data);

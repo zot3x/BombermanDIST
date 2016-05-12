@@ -14,7 +14,7 @@ public class Game {
 	public Game(ArrayList<NetworkPlayer> players, int id) {
 		//this.game = game;
 		
-		game = new BombeStart().start();
+		//game = new BombeStart().start();
 		this.players = players;
 		this.id = id;
 	}
@@ -36,5 +36,7 @@ public class Game {
 		}
 		return false;
 	}
+	
+	
 
 }
