@@ -274,7 +274,6 @@ public class Bombs {
 							&& rand[k].getSprunger() == 0) {
 						int j = rand[k].BOOM();
 						if (j == 1) {
-							System.err.println("hej");
 							bonuses.add(new powerUp(rand[k].getX(), rand[k]
 									.getY(), j));
 						}

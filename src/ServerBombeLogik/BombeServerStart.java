@@ -62,7 +62,8 @@ public class BombeServerStart {
 
 				while (true) {
 					tick();
-
+					map.drawplayingMap();
+					
 					try {
 						Thread.sleep(25); // gotta be approx 30 times a sec
 					} catch (InterruptedException ex) {
