@@ -112,7 +112,7 @@ public class ServerPacketListener implements Runnable {
 	        }  */
 		  int id = 0;
 		  newPlayers.add(player);
-		  int id = newPlayers.size();
+		  id = newPlayers.size();
 		  if(newPlayers.size() == 4){
 			  startNewGame();
 		  }
@@ -167,8 +167,17 @@ public class ServerPacketListener implements Runnable {
 	    	if(!(game == null)){
 	    		int playerID = packet.getID();
 	    		int direction = packet.getDirection();
-	    		game.MovePlayer(playerID, direction);
+	    		game.MovePlayerOrSetBomb(playerID, direction);
 	    	}   	
+	    }
+	    
+	    public static void handleBomb(PacketBomb packet, InetAddress address) {
+	    	Game game = findGame(packet.getGameID());
+	    	if(!(game == null)){
+	    		int playerID = packet.getID();
+	    		int direction = packet.getDirection();
+	    		game.MovePlayerOrSetBomb(playerID, direction);
+	    	}
 	    }
 	    
 	    private static Game findGame(int gameID){

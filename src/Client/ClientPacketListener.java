@@ -36,6 +36,9 @@ public class ClientPacketListener extends Thread {
     }
 
     public void run() {
+    	
+    	
+    	
         while (true) {
             byte[] data = new byte[1024];
             DatagramPacket packet = new DatagramPacket(data, data.length);
@@ -44,11 +47,11 @@ public class ClientPacketListener extends Thread {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            handlePacket(packet.getData(), packet.getAddress(), packet.getPort());
+            new ClientPacketHandler(socket, packet).run();
         }
     }
 
-    private void handlePacket(byte[] data, InetAddress address, int port) {
+ /*   private void handlePacket(byte[] data, InetAddress address, int port) {
         String message = new String(data).trim();
         Packets type = Packet.checkPacketID(message.substring(0, 2));
         Packet packet = null;
@@ -71,8 +74,8 @@ public class ClientPacketListener extends Thread {
           //  handleMove((PacketMove) packet);
         }
     }
-
-    public void sendData(byte[] data) {
+*/
+  /*  public void sendData(byte[] data) {
     	DatagramPacket packet = new DatagramPacket(data, data.length, ipAddress, 1331);
     	try {
     		socket.send(packet);
@@ -87,11 +90,11 @@ public class ClientPacketListener extends Thread {
         //add player to game
         
     }
-    
-    public static void handleGameState(PacketGameState gameState){
+    */
+/*    public static void handleGameState(PacketGameState gameState){
     	
     }
-
+*/
    /* private void handleMove(PacketMove packet) {
         movePlayer(packet.getX(), packet.getY(), packet.getNumSteps(),
                 packet.isMoving(), packet.getMovingDir());

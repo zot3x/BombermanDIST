@@ -38,10 +38,10 @@ public class Game {
 		return false;
 	}
 	
-	public void MovePlayer(int playerID, int direction){
+	public void MovePlayerOrSetBomb(int playerID, int keycode){
 		ArrayList<Accounts> gamers = game.getMap().getGamers();
 		Accounts gamer = gamers.get(playerID);
-		gamer.newKey(direction);
+		gamer.newKey(keycode);
 	}
 
 	public int getId() {

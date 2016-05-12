@@ -57,7 +57,7 @@ public class ClientPacketHandler implements Runnable{
 			break;
 		case GAMESTATE:
 			packetToHandle = new PacketGameState(data);
-			ClientPacketListener.handleGameState((PacketGameState) packetToHandle);
+			handleGameState((PacketGameState) packetToHandle);
 			
 		case READY:
 		}
@@ -65,5 +65,6 @@ public class ClientPacketHandler implements Runnable{
 	
 	public void handleGameState(PacketGameState gameState){
     	//do stuff
+		
     }
 }
