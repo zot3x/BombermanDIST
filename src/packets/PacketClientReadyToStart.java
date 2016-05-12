@@ -15,18 +15,6 @@ public class PacketClientReadyToStart extends Packet {
 	}
 
 	@Override
-	public void writeData(ClientPacketListener client) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void writeData(GameServer server) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public byte[] getData() {
 		 return ("2" + this.playerID).getBytes();
 	}

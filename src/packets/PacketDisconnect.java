@@ -23,16 +23,6 @@ public class PacketDisconnect extends Packet {
     }
 
     @Override
-    public void writeData(ClientPacketListener client) {
-        client.sendData(getData());
-    }
-
-    @Override
-    public void writeData(GameServer server) {
-        server.sendDataToAllClients(getData());
-    }
-
-    @Override
     public byte[] getData() {
         return ("01" + id).getBytes();
     }

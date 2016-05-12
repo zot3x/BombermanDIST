@@ -24,16 +24,6 @@ public class PacketMove extends Packet {
         }
 
     @Override
-    public void writeData(ClientPacketListener client) {
-        client.sendData(getData());
-    }
-
-    @Override
-    public void writeData(GameServer server) {
-        server.sendDataToAllClients(getData());
-    }
-
-    @Override
     public byte[] getData() {
         return ("2" + this.playerID + "," + this.x + "," + this.y).getBytes();
 

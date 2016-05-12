@@ -25,10 +25,6 @@ public abstract class Packet {
   //      this.packetID = (byte) packetID;
     }
 
-    public abstract void writeData(ClientPacketListener client);
-
-    public abstract void writeData(GameServer server);
-
     public String readData(byte[] data) {
         String message = new String(data).trim();
         return message.substring(1);
