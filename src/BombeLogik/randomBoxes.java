@@ -78,7 +78,7 @@ public class randomBoxes {
 	}
 
 	public String getSendableData(){
-		String toSend = String.valueOf((short)x) + String.valueOf((short)y) + String.valueOf(sprunget);
+		String toSend = String.valueOf(sprunget);
 		
 		return toSend;
 	}

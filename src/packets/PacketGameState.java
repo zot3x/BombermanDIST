@@ -6,8 +6,6 @@ public class PacketGameState extends Packet {
 	short[] gamersY = new short[4];
 	byte[] gamersID = new byte[4];
 	byte[] gamersAlive = new byte[4];
-	short[] randX = new short[105];
-	short[] randY = new short[105];
 	byte[] randSprunget = new byte[105];
 	short[] bombX = new short[4];
 	short[] bombY = new short[4];
@@ -50,10 +48,6 @@ public class PacketGameState extends Packet {
 				}
 
 			} else {
-				this.randX[randcounter] = (byte) Integer.parseInt(dataArray[counter]);
-				counter++;
-				this.randY[randcounter] = (byte) Integer.parseInt(dataArray[counter]);
-				counter++;
 				this.randSprunget[randcounter] = (byte) Integer.parseInt(dataArray[counter]);
 				counter++;
 				randcounter++;
@@ -104,13 +98,6 @@ public class PacketGameState extends Packet {
 	public byte[] getRandSprunget() {
 		return randSprunget;
 	}
-	public short[] getRandX() {
-		return randX;
-	}
-	public short[] getRandY() {
-		return randY;
-	}
-	
 
 
 }

@@ -20,7 +20,7 @@ public class drawMap {
 	private initMap map;
 	private ArrayList<Bombs> laidbombs;
 	private Point[] bombposA;
-	ArrayList<Accounts> gamers;
+	public ArrayList<Accounts> gamers;
 	private int playerKilledBonus = 50;
 	private int boxBoomBonus = 5;
 	private ArrayList<powerUp> powerUps = new ArrayList<>();
@@ -119,7 +119,6 @@ public class drawMap {
 		for(int i = 0; i<4; i++){
 			toSend = toSend + gamers.get(i).getSendableData();
 		}
-		toSend = toSend + ",";
 		for(int i = 0; i<map.getRandBox().length; i++){
 		toSend = toSend + map.getRandBox()[i].getSendableData();
 		}

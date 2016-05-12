@@ -179,6 +179,9 @@ public class Accounts {
 	public void killPlayer() {
 		this.alive = 0;
 	}
+	public void setPlayerAliveInfo(byte k){
+		this.alive = k;
+	}
 
 	public int getID() {
 		return ID;

@@ -69,6 +69,16 @@ public class ClientPacketHandler implements Runnable{
 	
 	public void handleGameState(PacketGameState gameState){
     	game.getMap();
+    	int counter = 0;
+    	for(int i = 0; i<4;i++){
+    		game.getMap().getGamers().get(i).setX(gameState.getBombX()[i]);
+    		game.getMap().getGamers().get(i).setY(gameState.getBombY()[i]);
+    		game.getMap().getGamers().get(i).
+
+
+
+    	}
+    	
 		
     }
 }
