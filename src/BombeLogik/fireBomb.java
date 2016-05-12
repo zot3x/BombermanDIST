@@ -23,7 +23,7 @@ public class fireBomb {
 	private int fireH = 40;
 	private Image fireImg;
 	private int fireTime = 0;
-	private boolean fireon = false;
+	private byte fireon = 0;
 	private int fireTimeOn = 50;
 
 	public fireBomb() {
@@ -62,6 +62,10 @@ public class fireBomb {
 	public int getFireY() {
 		return this.fireY;
 	}
+	
+	public void setFireMode(byte k){
+		this.fireon = k;
+	}
 
 	public void setFireTime() {
 		this.fireTime += 1;
@@ -76,15 +80,15 @@ public class fireBomb {
 	}
 
 	public void setfireOn() {
-		this.fireon = true;
+		this.fireon = 1;
 	}
 
 	public void setfireOf() {
-		this.fireon = false;
+		this.fireon = 0;
 		this.fireTime = 0;
 	}
 
-	public boolean getFireMode() {
+	public byte getFireMode() {
 		return fireon;
 	}
 
@@ -108,7 +112,7 @@ public class fireBomb {
 	}
 
 	public String getSendableData(){
-		String toSend = String.valueOf(fireX) + String.valueOf(fireY);
+		String toSend = String.valueOf(fireX) + String.valueOf(fireY) + String.valueOf(fireon);
 		//+ String.valueOf(fireTime) + String.valueOf(fireon) + String.valueOf(fireTimeOn)
 		return toSend;
 	}

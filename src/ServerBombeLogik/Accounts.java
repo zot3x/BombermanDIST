@@ -105,9 +105,7 @@ public class Accounts {
 		this.alive = 1;
 		this.inputs = new KeyPress(this, map);
 	}
-	public void setPlayerAliveInfo(byte k){
-		this.alive = k;
-	}
+
 
 	public Accounts(int x, int y) {
 		this.x = x;

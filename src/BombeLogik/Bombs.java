@@ -267,7 +267,7 @@ public class Bombs {
 	public void drawFire(Graphics2D g2d, randomBoxes[] rand,
 			ArrayList<Accounts> acc) {
 		for (int i = 0; i < firebombs.size(); i++) {
-			if (firebombs.get(i).getFireMode() == true) {
+			if (firebombs.get(i).getFireMode() == 1) {
 				for (int k = 0; k < rand.length; k++) {
 					if (firebombs.get(i).getBounds1()
 							.intersects(rand[k].getBounds1())
@@ -321,5 +321,8 @@ public class Bombs {
 			toSend = toSend + String.valueOf(firebombs.get(i).getFireMode());
 		}
 		return toSend;
+	}
+	public void setLaidBool(byte k){
+		this.laidDown = k;
 	}
 }

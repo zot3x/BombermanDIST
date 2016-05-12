@@ -38,6 +38,10 @@ public class randomBoxes {
 	public int getX() {
 		return x;
 	}
+	
+	public void setMode(byte k){
+		this.sprunget = k;
+	}
 
 	public int getY() {
 		return y;

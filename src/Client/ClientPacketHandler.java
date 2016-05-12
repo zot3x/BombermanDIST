@@ -73,10 +73,21 @@ public class ClientPacketHandler implements Runnable{
     	for(int i = 0; i<4;i++){
     		game.getMap().getGamers().get(i).setX(gameState.getBombX()[i]);
     		game.getMap().getGamers().get(i).setY(gameState.getBombY()[i]);
-    		game.getMap().getGamers().get(i).getRekt
+    		game.getMap().getGamers().get(i).setPlayerAliveInfo(gameState.getGamersAlive()[i]);
+    		game.getMap().getGamers().get(i).getBomber().get(0).setX(gameState.getBombX()[i]);
+    		game.getMap().getGamers().get(i).getBomber().get(0).setY(gameState.getBombY()[i]);
+    		game.getMap().getGamers().get(i).getBomber().get(0).setLaidBool(gameState.getBombLaid()[i]);
+    		for(int j = 0;j<5;j++){
+    			game.getMap().getGamers().get(i).getBomber().get(0).getFirebombs().get(j).setFireX(gameState.getFireX()[counter]);
+    			game.getMap().getGamers().get(i).getBomber().get(0).getFirebombs().get(j).setFireY(gameState.getFireY()[counter]);
+    			game.getMap().getGamers().get(i).getBomber().get(0).getFirebombs().get(j).setFireMode(gameState.getFireMode()[counter]);
+    			counter++;
 
+    		}
 
-
+    	}
+    	for(int i = 0; i<105;i++){
+    		game.getMap().getRandBox()[i].setMode(gameState.getRandSprunget()[i]);
     	}
     	
 		

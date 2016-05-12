@@ -24,13 +24,15 @@ public class drawMap {
 	private int playerKilledBonus = 50;
 	private int boxBoomBonus = 5;
 	private ArrayList<powerUp> powerUps = new ArrayList<>();
+	private randomBoxes[] randBox;
+
 
 	public drawMap(int Players) {
 		map = new initMap(Players);
 		this.laidbombs = map.laidbombs;
 		this.bombposA = map.getBombposA();
 		gamers = map.getGamers();
-
+		this.randBox = map.getRandBox();
 	}
 
 	public void drawLogInMap(Graphics2D g2d) {
@@ -200,5 +202,9 @@ public class drawMap {
 	public int getRekt(){
 		int rekt = 0;
 		return rekt;
+	}
+	
+	public randomBoxes[] getRandBox() {
+		return randBox;
 	}
 }
