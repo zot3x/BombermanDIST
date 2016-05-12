@@ -10,92 +10,106 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
+ ********** REAL HERE**********************************
  *
- * @author AnwarC
+ * Denne klasse har en masse get og set, du kan vel hurtigt selv finde ud af
+ * hvilken der er hvad :) navnene siger sig selv.
  */
 public class fireBomb {
 
-    private int fireX;
-    private int fireY;
-    private int fireW = 40;
-    private int fireH = 40;
-    private Image fireImg;
-    private int fireTime = 0;
-    private boolean fireon = false;
-    private int fireTimeOn = 50;
+	private int fireX;
+	private int fireY;
+	private int fireW = 40;
+	private int fireH = 40;
+	private Image fireImg;
+	private int fireTime = 0;
+	private boolean fireon = false;
+	private int fireTimeOn = 50;
 
-    public fireBomb() {
-        ImageIcon WI = new ImageIcon("src/Picture/rsz_explosion.png");
-        fireImg = WI.getImage();
-    }
+	public fireBomb() {
+		ImageIcon WI = new ImageIcon("Src/ImagesBombe/rsz_explosion.png");
+		fireImg = WI.getImage();
+	}
 
-    public void setFireH(int fireH) {
-        this.fireH = fireH;
-    }
+	public void setFireH(int fireH) {
+		this.fireH = fireH;
+	}
 
+	public void setFireW(int fireW) {
+		this.fireW = fireW;
+	}
 
+	public void setFireX(int fireX) {
+		this.fireX = fireX;
+	}
 
-    public void setFireW(int fireW) {
-        this.fireW = fireW;
-    }
+	public void setFireY(int fireY) {
+		this.fireY = fireY;
+	}
 
-    public void setFireX(int fireX) {
-        this.fireX = fireX;
-    }
+	public int getFireH() {
+		return fireH;
+	}
 
-    public void setFireY(int fireY) {
-        this.fireY = fireY;
-    }
+	public int getFireW() {
+		return this.fireW;
+	}
 
-    public int getFireH() {
-        return fireH;
-    }
+	public int getFireX() {
+		return this.fireX;
+	}
 
+	public int getFireY() {
+		return this.fireY;
+	}
 
-    public int getFireW() {
-        return this.fireW;
-    }
+	public void setFireTime() {
+		this.fireTime += 1;
+	}
 
-    public int getFireX() {
-        return this.fireX;
-    }
+	public int getFireTime() {
+		return this.fireTime;
+	}
 
-    public int getFireY() {
-        return this.fireY;
-    }
+	public Image getFireImg() {
+		return fireImg;
+	}
 
-    public void setFireTime() {
-        System.err.println(this.fireTime);
-        this.fireTime +=1;
-    }
+	public void setfireOn() {
+		this.fireon = true;
+	}
 
-    public int getFireTime() {
-        return this.fireTime;
-    }
+	public void setfireOf() {
+		this.fireon = false;
+		this.fireTime = 0;
+	}
 
-    public Image getFireImg() {
-        return fireImg;
-    }
-    public void setfireOn(){
-        this.fireon = true;
-    }
-    public void setfireOf(){
-        this.fireon = false;
-    }
-    public boolean getFireMode(){
-        return fireon;
-    }
-    public void fireOff(){
-        if(this.fireTime >= this.fireTimeOn){
-            this.setfireOf();
-            this.fireTime = 0;
-        }
-    }
-    
-        public Rectangle getBounds1() {
-        return new Rectangle(this.fireX, this.fireY, this.fireH, this.fireW);
-    }
-    
-    
+	public boolean getFireMode() {
+		return fireon;
+	}
 
+	public void fireOff() {
+		if (this.fireTime >= this.fireTimeOn) {
+			this.setfireOf();
+
+		}
+	}
+
+	public Rectangle getBounds1() {
+		return new Rectangle(this.fireX, this.fireY, this.fireH, this.fireW);
+	}
+
+	public void setFireTime(int fireTime) {
+		this.fireTime = fireTime;
+	}
+
+	public int getFireTimeOn() {
+		return fireTimeOn;
+	}
+
+	public String getSendableData(){
+		String toSend = String.valueOf(fireX) + String.valueOf(fireY);
+		//+ String.valueOf(fireTime) + String.valueOf(fireon) + String.valueOf(fireTimeOn)
+		return toSend;
+	}
 }

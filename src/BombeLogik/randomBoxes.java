@@ -11,74 +11,75 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 /**
+ ********** REAL HERE**********************************
  *
- * @author AnwarC
+ * Denne klasse har en masse get og set, du kan vel hurtigt selv finde ud af
+ * hvilken der er hvad :) navnene siger sig selv.
  */
 public class randomBoxes {
-    private int x,y;
-    private final int height = 40;
-    private final int width = 40;
-    private boolean sprunget = false;
-    private Image img;
-    
-    public randomBoxes(int x, int y){
-                ImageIcon WI = new ImageIcon("src/Picture/block.png");
-        img = WI.getImage();
-        this.x = x;
-        this.y = y;
+	private int x, y;
+	private final int height = 40;
+	private final int width = 40;
+	private boolean sprunget = false;
+	private Image img;
 
-    }
+	public randomBoxes(int x, int y) {
+		ImageIcon WI = new ImageIcon("Src/ImagesBombe/block.png");
+		img = WI.getImage();
+		this.x = x;
+		this.y = y;
 
-    public Image getImg() {
-        return img;
-    }
-    
-    
-    
+	}
 
-    public int getX() {
-        return x;
-    }
+	public Image getImg() {
+		return img;
+	}
 
-    public int getY() {
-        return y;
-    }
+	public int getX() {
+		return x;
+	}
 
-    public int getHeight() {
-        return height;
-    }
+	public int getY() {
+		return y;
+	}
 
-    public int getWidth() {
-        return width;
-    }
-    
-      public Rectangle getBounds1() {
-        return new Rectangle(getX(), getY(), width, height);
-    }
-      
-      
-      
-      public boolean getSprunger(){
-          return this.sprunget;
-      }
-      
-      public int BOOM(){
-          int bonus = 0;
-          
-          Random randnum = new Random();
-          
-          int nextRan = randnum.nextInt(30);
-          
-          if(nextRan <10){
-              bonus = 1;
-          }
-          else if (nextRan <20 && nextRan > 9){
-              bonus = 2;
-          }
-          
-          this.sprunget = true;
-          
-         return  bonus;
-      }
+	public int getHeight() {
+		return height;
+	}
 
+	public int getWidth() {
+		return width;
+	}
+
+	public Rectangle getBounds1() {
+		return new Rectangle(getX(), getY(), width, height);
+	}
+
+	public boolean getSprunger() {
+		return this.sprunget;
+	}
+
+	public int BOOM() {
+		int bonus = 0;
+
+		Random randnum = new Random();
+
+		int nextRan = randnum.nextInt(50);
+
+		if (nextRan < 10) {
+			bonus = 1;
+		} else if (nextRan < 20 && nextRan > 9) {
+			bonus = 2;
+		}
+
+		this.sprunget = true;
+
+		return bonus;
+	}
+
+	public String getSendableData(){
+		String toSend = String.valueOf(x) + String.valueOf(y) + String.valueOf(sprunget);
+		
+		return toSend;
+	}
 }
