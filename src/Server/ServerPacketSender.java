@@ -16,13 +16,13 @@ public class ServerPacketSender implements Runnable {
 	private NetworkPlayer player = null;
 	private ArrayList<NetworkPlayer> players = null;
 	
-	ServerPacketSender(DatagramSocket socket, byte[] data, NetworkPlayer player){
+	public ServerPacketSender(DatagramSocket socket, byte[] data, NetworkPlayer player){
 		this.socket = socket;
 		this.data = data;
 		this.player = player;
 	}
 	
-	ServerPacketSender(DatagramSocket socket, byte[] data, ArrayList<NetworkPlayer> players){
+	public ServerPacketSender(DatagramSocket socket, byte[] data, ArrayList<NetworkPlayer> players){
 		this.socket = socket;
 		this.data = data;
 		this.players = players;

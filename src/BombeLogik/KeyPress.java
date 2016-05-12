@@ -33,40 +33,14 @@ public class KeyPress extends KeyAdapter {
 	private initMap map;
 
 	public KeyPress(Accounts play, initMap Map) {
-		int playerID = play.getID();
 		this.map = Map;
-		switch (playerID) {
-		case 0:
-			input1 = KeyEvent.VK_A;
-			input2 = KeyEvent.VK_S;
-			input3 = KeyEvent.VK_D;
-			input4 = KeyEvent.VK_W;
-			input5 = KeyEvent.VK_Q;
-			break;
-		case 1:
-			input1 = KeyEvent.VK_F;
-			input2 = KeyEvent.VK_G;
-			input3 = KeyEvent.VK_H;
-			input4 = KeyEvent.VK_T;
-			input5 = KeyEvent.VK_R;
-			break;
-		case 2:
-			input1 = KeyEvent.VK_J;
-			input2 = KeyEvent.VK_K;
-			input3 = KeyEvent.VK_L;
-			input4 = KeyEvent.VK_I;
-			input5 = KeyEvent.VK_U;
-			break;
-		case 3:
+
 			input1 = KeyEvent.VK_LEFT;
 			input2 = KeyEvent.VK_DOWN;
 			input3 = KeyEvent.VK_RIGHT;
 			input4 = KeyEvent.VK_UP;
 			input5 = KeyEvent.VK_SPACE;
-			break;
-		default:
-			break;
-		}
+
 		this.player = play;
 	}
 	
@@ -77,7 +51,7 @@ public class KeyPress extends KeyAdapter {
 
 	public void keyPressed(int Keycode) {
 		
-		new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes()).run();
+		//new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes()).run();
 		
 		if (player.playerAlive() == 1) {
 			Accounts tempA = new Accounts(player.getX(), player.getY());
@@ -112,6 +86,8 @@ public class KeyPress extends KeyAdapter {
 
 						if (map.getWallleft()[0].getX() + 40 < tempA.getX()) {
 							player.setX(tempA.getX());
+							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes()).run();
+
 						}
 					}
 				}
@@ -146,6 +122,8 @@ public class KeyPress extends KeyAdapter {
 
 						if (map.getWallbot()[0].getY() > tempA.getY() + 30) {
 							player.setY(tempA.getY());
+							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes()).run();
+
 						}
 					}
 				}
@@ -179,6 +157,8 @@ public class KeyPress extends KeyAdapter {
 
 						if (map.getWallright()[0].getX() > tempA.getX() + 30) {
 							player.setX(tempA.getX());
+							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes()).run();
+
 						}
 					}
 				}
@@ -214,12 +194,18 @@ public class KeyPress extends KeyAdapter {
 
 						if (map.getWalltop()[0].getY() + 40 < tempA.getY()) {
 							player.setY(tempA.getY());
+							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes()).run();
+
 						}
 					}
 				}
 
 			} else if (Keycode == input5) {
-				setBomb(player);
+				boolean bombCheck =	setBomb(player);
+				if(bombCheck == true){
+					new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes()).run();
+
+				}
 			}
 
 		}
@@ -285,7 +271,8 @@ public class KeyPress extends KeyAdapter {
 		return bombpos;
 	}
 
-	private void setBomb(Accounts acc) {
+	private boolean setBomb(Accounts acc) {
+		boolean bombAvaliable = false;
 		if (acc.getLaidBombs() < acc.getavaBomb()) {
 			Point bombpos = findBombPos(acc);
 			map.getLaidbombs().add(acc.getBomber().get(acc.getLaidBombs()));
@@ -293,9 +280,10 @@ public class KeyPress extends KeyAdapter {
 			acc.getBomber().get(acc.getLaidBombs()).setY(bombpos.y);
 			acc.getBomber().get(acc.getLaidBombs()).setLaid();
 			acc.setLaidBombs();
+			bombAvaliable = true;
 
 		}
-
+		return bombAvaliable;
 	}
 
 }
