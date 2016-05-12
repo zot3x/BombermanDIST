@@ -17,6 +17,9 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class Highscore extends JPanel {
 
@@ -81,7 +84,21 @@ public class Highscore extends JPanel {
 				public void top10(ArrayList<FirebaseUser> scoreList) {
 
 					super.top10(scoreList);
+					
+					Collections.sort((List<FirebaseUser>)scoreList, new Comparator<FirebaseUser>() {
 
+						@Override
+						public int compare(FirebaseUser o1, FirebaseUser o2) {
+							if (o1.Highscore < o2.Highscore){
+								return 1;					
+							}else if (o1.Highscore > o2.Highscore){
+								return -1;					
+							}
+							return 0;
+						}
+						
+					});
+			
 					for(int i = 0 ; i < 10 && i < scoreList.size() ; i++){
 						nameList.add(scoreList.get(i).Navn);
 						pointList.add(scoreList.get(i).Highscore);
@@ -93,6 +110,8 @@ public class Highscore extends JPanel {
 						data[s][0] = s+1;					
 					}
 				}});
+			
+		
 		} catch (FirebaseDataException e) {
 			e.printStackTrace();
 		}

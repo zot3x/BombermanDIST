@@ -14,11 +14,11 @@ public class Main {
 		UserController uDAO = new UserController();
 	
 		HighScoreController hSC = new HighScoreController();
-					uDAO.saveUser(new FirebaseUser("Favad11", "Favad44", 999999));
-					uDAO.saveUser(new FirebaseUser("Joe11", "Joee12", 12));
-					uDAO.saveUser(new FirebaseUser("lel", "leeel992", 111));
-					uDAO.saveUser(new FirebaseUser("mums", "meeen91", 344));
-					uDAO.saveUser(new FirebaseUser("test10", "rød03", 33));
+					uDAO.saveUser(new FirebaseUser("Hadi600", "HadiWow", 80000));
+//					uDAO.saveUser(new FirebaseUser("Joe11", "Joee12", 12));
+//					uDAO.saveUser(new FirebaseUser("lel", "leeel992", 111));
+//					uDAO.saveUser(new FirebaseUser("mums", "meeen91", 344));
+//					uDAO.saveUser(new FirebaseUser("test10", "rød03", 33));
 //					
 //
 //		FirebaseListener fbl = new FirebaseListener()
