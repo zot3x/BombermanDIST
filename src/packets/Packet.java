@@ -23,7 +23,7 @@ public abstract class Packet {
     }
 
     public String readData(byte[] data) {
-        String message = new String(data).trim();
+        String message = new String(data, 0, data.length).trim();
         return message.substring(1);
     }
 

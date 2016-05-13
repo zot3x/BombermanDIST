@@ -7,6 +7,7 @@ public class PacketClientConnect extends Packet {
     public PacketClientConnect(byte[] data) {
         super(1);
         String[] dataArray = readData(data).split(",");
+        System.out.println(dataArray[0]);
         this.id = Integer.parseInt(dataArray[0]);
     }
 

@@ -79,9 +79,10 @@ public class BombeServerStart {
 
 	private void tick() {
 		// Send out gamestate
+		System.out.println("Starting to send gamestate");
 		String Gamestate = getSendableData();
-		new ServerPacketSender(socket, Gamestate.getBytes(), players);
-
+		new ServerPacketSender(socket, Gamestate.getBytes(), players).run();
+		System.out.println("SeverpacketSender initiated");
 		// Check if players alive
 
 		int alive = 0;

@@ -1,5 +1,6 @@
 package Server;
 
+import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.ArrayList;
 
@@ -12,12 +13,13 @@ public class Game {
 	ArrayList<NetworkPlayer> players;
 	BombeServerStart game;
 
-	public Game(ArrayList<NetworkPlayer> players, int id) {
+	public Game(ArrayList<NetworkPlayer> players, int id, DatagramSocket socket) {
 		//this.game = game;
 		
 		//game = new BombeStart().start();
-		//game = new BombeServerStart(players.size(), )
 		this.players = players;
+
+		game = new BombeServerStart(players.size(), socket, players );
 		this.id = id;
 	}
 

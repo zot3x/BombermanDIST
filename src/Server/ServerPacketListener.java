@@ -14,7 +14,7 @@ import packets.PacketMove;
 public class ServerPacketListener implements Runnable {
 
 	private int port = 12346;
-	private DatagramSocket socket;
+	private static DatagramSocket socket;
 	private DatagramPacket packet;
 	private byte[] buffer;
 	private InetAddress hostAddress;
@@ -147,7 +147,9 @@ public class ServerPacketListener implements Runnable {
 	    }
 
 	    public static void startNewGame(){
-	    Game game = new Game(newPlayers, gameID);
+	    	System.out.println("Starting new game");
+	    Game game = new Game(newPlayers, gameID, socket);
+	    System.out.println("Game created");
 	    gamesRunning.add(game);
 	    newPlayers.removeAll(newPlayers);
 	    gameID++;

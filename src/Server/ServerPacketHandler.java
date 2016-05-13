@@ -15,6 +15,7 @@ public class ServerPacketHandler implements Runnable {
 	private DatagramPacket packet;
 	private boolean response = false;
 	byte[] data = null;
+	String dataString = null;
 	private Packet packetToHandle = null;
 
 	private InetAddress address;
@@ -24,6 +25,7 @@ public class ServerPacketHandler implements Runnable {
 		this.socket = socket;
 		this.packet = packet;
 		this.data = packet.getData();
+		this.dataString = new String(data, 0, data.length);
 		address = packet.getAddress();
 		port = packet.getPort();
 	}
@@ -48,35 +50,38 @@ public class ServerPacketHandler implements Runnable {
 			System.out.println(data[i]);
 		}
 		System.out.println(data.length + " " + data[0] + " " + data[50]);
-		String message = new String(data);
-		Packets type = Packet.checkPacketID(message.substring(0, 2));
+		System.out.println("String = " + dataString);
+		Packets type = Packet.checkPacketID(dataString.substring(0, 1));
+		System.out.println("Type = " + type);
 		switch (type) {
 		default:
 		case INVALID:
 			break;
 		case CONNECT:
-			packetToHandle = new PacketClientConnect(data);
-			System.out.println("[" + address + ":" + port + "] "
-					+ packet.getAddress() + " has connected...");
+			System.out.println("Inside CONNECT SWITCH");
+			PacketClientConnect packetConnect = new PacketClientConnect(data);
+			System.out.println("Hallo!!" + packetConnect.getPacketID());
+			System.out.println("Packet with packetID: " + packetConnect.getPacketID() + " from IP: " + address + " on port: " + port + " has been handled...");
 			NetworkPlayer player = new NetworkPlayer(address, port);
+			System.out.println(player.getIpAddress() + " " + player.getPort());
 			int[] responseData = ServerPacketListener.addConnection(player);
-			
+			System.out.println("player added");
 //			Packet responsePacket = new PacketConnect(responseData[0], responseData[1]);
 	//		new ServerPacketSender(responsePacket,);
 			break;
 		case DISCONNECT:
-			packetToHandle = new PacketDisconnect(data);
+			PacketDisconnect packetDisconnect = new PacketDisconnect(data);
 			System.out.println("[" + address + ":" + port + "] "
 					+ packet.getAddress() + " has left...");
 			ServerPacketListener
 					.removeConnection((PacketDisconnect) packetToHandle);
 			break;
 		case MOVE:
-			packetToHandle = new PacketMove(data);
-			ServerPacketListener.handleMove((PacketMove) packetToHandle, address);
+			PacketMove packetMove = new PacketMove(data);
+			ServerPacketListener.handleMove(packetMove, address);
 		case BOMB:
-			packetToHandle = new PacketBomb(data);
-			ServerPacketListener.handleBomb((PacketBomb) packetToHandle, address);
+			PacketBomb packetBomb = new PacketBomb(data);
+			ServerPacketListener.handleBomb(packetBomb, address);
 		case READY:
 		}
 	}
