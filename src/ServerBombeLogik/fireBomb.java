@@ -108,7 +108,7 @@ public class fireBomb {
 	}
 
 	public String getSendableData(){
-		String toSend = String.valueOf(fireX) + String.valueOf(fireY);
+		String toSend = String.valueOf(fireX) + "," + String.valueOf(fireY) + ",";
 		//+ String.valueOf(fireTime) + String.valueOf(fireon) + String.valueOf(fireTimeOn)
 		return toSend;
 	}

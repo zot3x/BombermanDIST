@@ -311,11 +311,11 @@ public class Bombs {
 	}
 
 	public String getSendableData(){
-		String toSend = String.valueOf((short)x) + String.valueOf((short)y) + String.valueOf(laidDown);
+		String toSend = String.valueOf((short)x) + "," + String.valueOf((short)y) + "," + String.valueOf(laidDown) + ",";
 		for(int i = 0; i < firebombs.size(); i++){
-			toSend = toSend + String.valueOf(firebombs.get(i).getFireX());
-			toSend = toSend + String.valueOf(firebombs.get(i).getFireY());
-			toSend = toSend + String.valueOf(firebombs.get(i).getFireMode());
+			toSend = toSend + String.valueOf(firebombs.get(i).getFireX()) + ",";
+			toSend = toSend + String.valueOf(firebombs.get(i).getFireY()) + ",";
+			toSend = toSend + String.valueOf(firebombs.get(i).getFireMode()) + ",";
 		}
 		return toSend;
 	}

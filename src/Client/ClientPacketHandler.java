@@ -6,8 +6,6 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 import BombeLogik.BombeStart;
-import Server.NetworkPlayer;
-import Server.ServerPacketListener;
 import packets.*;
 import packets.Packet.Packets;
 
@@ -62,8 +60,8 @@ public class ClientPacketHandler implements Runnable{
 		//	ClientPacketListener.addConnection(player, (PacketConnect) packetToHandle);
 			break;
 		case GAMESTATE:
-			packetToHandle = new PacketGameState(data);
-			handleGameState((PacketGameState) packetToHandle);
+			PacketGameState packetGameState = new PacketGameState(data);
+			handleGameState(packetGameState);
 			
 		case READY:
 		}
@@ -72,9 +70,12 @@ public class ClientPacketHandler implements Runnable{
 	public void handleGameState(PacketGameState gameState){
     	game.getMap();
     	int counter = 0;
+		System.out.println(game.getMap().getSendableData());
     	for(int i = 0; i<4;i++){
-    		game.getMap().getGamers().get(i).setX(gameState.getBombX()[i]);
-    		game.getMap().getGamers().get(i).setY(gameState.getBombY()[i]);
+    		System.out.println("Gamestate bombx = " + gameState.getGamersX()[i]);
+    		game.getMap().getGamers().get(i).setX(gameState.getGamersX()[i]);
+    		System.out.println("Game client bombx = " + game.getMap().getGamers().get(i).getX());
+    		game.getMap().getGamers().get(i).setY(gameState.getGamersY()[i]);
     		game.getMap().getGamers().get(i).setPlayerAliveInfo(gameState.getGamersAlive()[i]);
     		game.getMap().getGamers().get(i).getBomber().get(0).setX(gameState.getBombX()[i]);
     		game.getMap().getGamers().get(i).getBomber().get(0).setY(gameState.getBombY()[i]);

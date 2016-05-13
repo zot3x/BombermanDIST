@@ -97,40 +97,10 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 		add(guicomp.getSTART3());
 		add(guicomp.getSTART4());
 		add(guicomp.getHighScore());
-
-		guicomp.getHighScore().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				state = State.HIGHSCORE;
-
-			}
-		});
-
-		guicomp.getSTART2().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				state = State.PLAYING;
-				map = new drawMap(2);
-
-			}
-		});
-		guicomp.getSTART3().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				state = State.PLAYING;
-				map = new drawMap(3);
-
-			}
-		});
-		guicomp.getSTART4().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				state = State.PLAYING;
-				map = new drawMap(4);
-
-			}
-		});
-
+		
+		map = new drawMap(4);
+		state = state.PLAYING;
+		
 		guicomp.getCheckLog().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -150,7 +120,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 
 		});
 			
-		new ClientPacketListener(instance).run();
+		new ClientPacketListener(this).run();
 	}
 
 	/*
@@ -172,7 +142,8 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 		guicomp.getHighS().setVisible(true);
 		guicomp.getLogBut().setVisible(true);
 		guicomp.getLogBut().addActionListener((ActionEvent e) -> {
-			state = state.LOGIN;
+		//	state = state.LOGIN;
+			state = state.PLAYING;
 			guicomp.getHighS().setVisible(false);
 			guicomp.getLogBut().setVisible(false);
 		});

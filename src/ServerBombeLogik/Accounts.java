@@ -236,8 +236,7 @@ public class Accounts {
 	}
 	
 	public String getSendableData(){
-		String toSend = String.valueOf((short)x) + String.valueOf((short)y) + String.valueOf((byte)ID + String.valueOf(alive)) ;
-		
+		String toSend = String.valueOf((short)x) + "," + String.valueOf((short)y) + "," + String.valueOf((byte)ID + "," + String.valueOf(alive)) + "," ;		
 		toSend = toSend + bomber.get(0).getSendableData();
 		return toSend;
 	}
