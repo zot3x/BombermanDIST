@@ -17,9 +17,12 @@ public class Game {
 		//this.game = game;
 		
 		//game = new BombeStart().start();
-		this.players = players;
-
-		game = new BombeServerStart(players.size(), socket, players );
+		this.players = new ArrayList<NetworkPlayer>();
+		for(NetworkPlayer player : players){
+	    	this.players.add(player);
+	    	}
+		
+		game = new BombeServerStart(this.players.size(), socket, this.players );
 		this.id = id;
 	}
 

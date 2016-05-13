@@ -116,7 +116,8 @@ public class drawMap {
 	public String getSendableData(){
 		String toSend = null;
 		
-		for(int i = 0; i<4; i++){
+		toSend = gamers.get(0).getSendableData();
+		for(int i = 1; i<4; i++){
 			toSend = toSend + gamers.get(i).getSendableData();
 		}
 		for(int i = 0; i<map.getRandBox().length; i++){
