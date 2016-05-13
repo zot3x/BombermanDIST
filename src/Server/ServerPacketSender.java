@@ -47,11 +47,8 @@ public class ServerPacketSender implements Runnable {
 	
 	 private void sendData(byte[] data, InetAddress address, int port) {
          DatagramPacket packet = new DatagramPacket(data, data.length, address, port);
-         String send = new String(data, 0, data.length);
           try {
-        	  System.out.println("sending this packet: " + send);
               socket.send(packet);
-              System.out.println("Packet send");
           } catch (IOException e) {
               e.printStackTrace();
           }

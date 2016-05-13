@@ -46,9 +46,9 @@ public class ClientPacketHandler implements Runnable{
 	}
 	
 	private void handlePacket(){
-		System.out.println(data.length + " " + data[0] + " " + data[50]);
 		String message = new String(data);
-		Packets type = Packet.checkPacketID(message.substring(0, 2));
+		System.out.println(message);
+		Packets type = Packet.checkPacketID(message.substring(0, 1));
 		switch (type) {
 		default:
 		case INVALID:

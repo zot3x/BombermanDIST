@@ -6,24 +6,25 @@ public class PacketGameState extends Packet {
 	short[] gamersY = new short[4];
 	byte[] gamersID = new byte[4];
 	byte[] gamersAlive = new byte[4];
-	byte[] randSprunget = new byte[105];
 	short[] bombX = new short[4];
 	short[] bombY = new short[4];
 	byte[] bombLaid = new byte[4];
 	short[] fireX = new short[20];
 	short[] fireY = new short[20];
 	byte[] fireMode = new byte[20];
-
+	byte[] randSprunget = new byte[105];
+	
 	public PacketGameState(byte[] data) {
 		super(9);
 		String[] dataArray = readData(data).split(",");
 		int arrcounter = 0;
 		int randcounter = 0;
+		System.out.println(dataArray[0] + " " + dataArray[1] + " " + dataArray[100]);
 		for (int i = 0; i < dataArray.length; i++) {
 			int counter = i;
 			if (i < gamersX.length + gamersY.length + gamersID.length + gamersAlive.length + bombX.length + bombY.length
 					+ bombLaid.length + fireX.length + fireY.length + fireMode.length) {
-				this.gamersX[arrcounter] = (short) Integer.parseInt(dataArray[counter]);
+				this.gamersX[arrcounter] = (short) Short.parseShort(dataArray[counter]);
 				counter++;
 				this.gamersY[arrcounter] = (short) Integer.parseInt(dataArray[counter]);
 				counter++;
@@ -99,5 +100,10 @@ public class PacketGameState extends Packet {
 		return randSprunget;
 	}
 
-
+	private String[] readGamestate(byte[] data){
+		String[] gameState = new String[200];
+		
+		
+		return gameState;
+	}
 }
