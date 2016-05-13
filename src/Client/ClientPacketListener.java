@@ -5,6 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
+import java.net.SocketAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
@@ -22,12 +23,16 @@ public class ClientPacketListener extends Thread {
     private InetAddress ipAddress;
     private static DatagramSocket socket;
     private BombeStart game;
+    private int port;
 
     public ClientPacketListener(BombeStart game) {
         this.game = game;
         try {
-            this.socket = new DatagramSocket();
+            this.socket = new DatagramSocket(port);
             this.ipAddress = InetAddress.getLocalHost();
+            
+            byte[] data = String.valueOf(1).getBytes();
+            new ClientPacketSender(socket, data).run();
         } catch (SocketException e) {
             e.printStackTrace();
         } catch (UnknownHostException e) {

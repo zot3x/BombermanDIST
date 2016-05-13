@@ -55,8 +55,9 @@ public class ServerPacketHandler implements Runnable {
 					+ packet.getAddress() + " has connected...");
 			NetworkPlayer player = new NetworkPlayer(address, port);
 			int[] responseData = ServerPacketListener.addConnection(player);
-			Packet responsePacket = new PacketConnect(responseData[0], responseData[1]);
-			new ServerPacketSender(responsePacket,);
+			
+//			Packet responsePacket = new PacketConnect(responseData[0], responseData[1]);
+	//		new ServerPacketSender(responsePacket,);
 			break;
 		case DISCONNECT:
 			packetToHandle = new PacketDisconnect(data);

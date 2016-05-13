@@ -151,6 +151,8 @@ public class ServerPacketListener implements Runnable {
 	    gamesRunning.add(game);
 	    newPlayers.removeAll(newPlayers);
 	    gameID++;
+	   // byte[] data = 111;
+	   // new ServerPacketSender(socket, data, game.getNetworkPlayers());
 	    }
 	    
 	    public static void removeGame(int gameID){

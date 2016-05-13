@@ -186,13 +186,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 			}
 		});
 		
-		int counter = 0;
 		while (true) {
-			if(counter == 5){ // how often do we want to send out gamestate??
-				tick();
-				counter = 0;
-			}
-			counter++;
 			
 			repaint();
 			try {
@@ -204,10 +198,6 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 
 		}
 
-	}
-	
-	private void tick(){
-		//Send out gamestate
 	}
 
 	@Override

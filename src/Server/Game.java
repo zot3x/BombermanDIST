@@ -69,6 +69,12 @@ public class Game {
 		this.game = game;
 	}
 	
+	public String getStartGameData(){
+		String toSend;
+		
+		return toSend;
+	}
+	
 	
 
 }
