@@ -16,7 +16,7 @@ public class Game {
 		//this.game = game;
 		
 		//game = new BombeStart().start();
-		game = new BombeServerStart(players.size(), )
+		//game = new BombeServerStart(players.size(), )
 		this.players = players;
 		this.id = id;
 	}
@@ -69,11 +69,11 @@ public class Game {
 		this.game = game;
 	}
 	
-	public String getStartGameData(){
+	/*public String getStartGameData(){
 		String toSend;
 		
 		return toSend;
-	}
+	}*/
 	
 	
 

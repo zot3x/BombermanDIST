@@ -26,6 +26,7 @@ public class ClientPacketHandler implements Runnable{
 	public ClientPacketHandler(DatagramSocket socket, DatagramPacket packet, BombeStart game){
 		this.socket = socket;
 		this.packet = packet;
+		this.data = packet.getData();
 		this.game = game;
 		this.address = socket.getInetAddress();
 		this.port = socket.getPort();
@@ -45,6 +46,7 @@ public class ClientPacketHandler implements Runnable{
 	}
 	
 	private void handlePacket(){
+		System.out.println(data.length + " " + data[0] + " " + data[50]);
 		String message = new String(data);
 		Packets type = Packet.checkPacketID(message.substring(0, 2));
 		switch (type) {

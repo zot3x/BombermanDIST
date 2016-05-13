@@ -15,13 +15,12 @@ public class PacketBomb extends Packet {
 	        this.direction = Integer.parseInt(dataArray[2]);
 	}
 	
-	public PacketBomb(int id, int x, int y) {
+	/*public PacketBomb(int id, int x, int y) {
         super(8);
         this.playerID = id;
-        this.x = x;
-        this.y = y;
+        t
         }
-
+*/
 	@Override
 	public byte[] getData() {
 		return ("8" + this.playerID + "," + this.gameID + "," + this.direction).getBytes();

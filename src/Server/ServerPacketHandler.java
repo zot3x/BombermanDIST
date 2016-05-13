@@ -23,6 +23,7 @@ public class ServerPacketHandler implements Runnable {
 	public ServerPacketHandler(DatagramSocket socket, DatagramPacket packet) {
 		this.socket = socket;
 		this.packet = packet;
+		this.data = packet.getData();
 		address = packet.getAddress();
 		port = packet.getPort();
 	}
@@ -43,6 +44,10 @@ public class ServerPacketHandler implements Runnable {
 	}
 
 	private void handlePacket() {
+		for(int i = 0; i < data.length; i++){
+			System.out.println(data[i]);
+		}
+		System.out.println(data.length + " " + data[0] + " " + data[50]);
 		String message = new String(data);
 		Packets type = Packet.checkPacketID(message.substring(0, 2));
 		switch (type) {

@@ -13,7 +13,7 @@ import packets.PacketDisconnect;
 import packets.PacketMove;
 public class ServerPacketListener implements Runnable {
 
-	private int port = 12345;
+	private int port = 12346;
 	private DatagramSocket socket;
 	private DatagramPacket packet;
 	private byte[] buffer;
@@ -49,7 +49,7 @@ public class ServerPacketListener implements Runnable {
 	@Override
 	public void run() {
 		
-		buffer = new byte[2048];
+		buffer = new byte[512];
 		packet = new DatagramPacket(buffer, buffer.length);
 		
 		while (true) {

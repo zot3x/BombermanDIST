@@ -10,8 +10,8 @@ public class PacketClientConnect extends Packet {
         this.id = Integer.parseInt(dataArray[0]);
     }
 
-    public PacketClientConnect(int id, int x, int y) {
-        super(00);
+    public PacketClientConnect(int id) {
+        super(1);
         this.id = id;
     }
 

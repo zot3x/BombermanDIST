@@ -10,6 +10,7 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 
 import packets.Packet;
+import packets.PacketClientConnect;
 import packets.PacketConnect;
 import packets.PacketDisconnect;
 import packets.PacketGameState;
@@ -23,16 +24,16 @@ public class ClientPacketListener extends Thread {
     private InetAddress ipAddress;
     private static DatagramSocket socket;
     private BombeStart game;
-    private int port;
+    private int port = 12346;
 
     public ClientPacketListener(BombeStart game) {
         this.game = game;
         try {
-            this.socket = new DatagramSocket(port);
+            ClientPacketListener.socket = new DatagramSocket();
             this.ipAddress = InetAddress.getLocalHost();
             
-            byte[] data = String.valueOf(1).getBytes();
-            new ClientPacketSender(socket, data).run();
+            Packet packet = new PacketClientConnect(30);
+            new ClientPacketSender(socket, packet.getData()).run();
         } catch (SocketException e) {
             e.printStackTrace();
         } catch (UnknownHostException e) {
@@ -45,7 +46,7 @@ public class ClientPacketListener extends Thread {
     	
     	
         while (true) {
-            byte[] data = new byte[1024];
+            byte[] data = new byte[512];
             DatagramPacket packet = new DatagramPacket(data, data.length);
             try {
                 socket.receive(packet);
