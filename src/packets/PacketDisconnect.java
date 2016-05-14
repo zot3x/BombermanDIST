@@ -9,7 +9,7 @@ public class PacketDisconnect extends Packet {
     private int port;
 
     public PacketDisconnect(byte[] data) {
-        super(01);
+        super(7);
         this.id = Integer.parseInt(readData(data));
     }
 

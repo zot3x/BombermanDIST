@@ -147,7 +147,7 @@ public class drawMap {
 
 	public void newKeyInput(int keycode) {
 	//	for (int i = 0; i < gamers.size(); i++) {
-			gamers.get(3).newKey(keycode);
+			gamers.get(0).newKey(keycode);
 	//	}
 	}
 
@@ -200,11 +200,6 @@ public class drawMap {
 		toSend = toSend + map.getRandBox()[i].getSendableData();
 		}
 		return toSend;
-	}
-	
-	public int getRekt(){
-		int rekt = 0;
-		return rekt;
 	}
 	
 	public randomBoxes[] getRandBox() {

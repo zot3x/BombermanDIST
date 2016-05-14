@@ -7,7 +7,7 @@ public class PacketMove extends Packet {
     private int direction;
 
     public PacketMove(byte[] data) {
-        super(2);
+        super(3);
         String[] dataArray = readData(data).split(",");
         this.playerID = Integer.parseInt(dataArray[0]);
         this.gameID = Integer.parseInt(dataArray[1]);
@@ -15,7 +15,7 @@ public class PacketMove extends Packet {
     }
 
     public PacketMove(int id, int gameID,  int direction) {
-        super(2);
+        super(3);
         this.playerID = id;
         this.gameID = gameID;
         this.direction = direction;
@@ -24,7 +24,7 @@ public class PacketMove extends Packet {
 
     @Override
     public byte[] getData() {
-        return ("2" + this.playerID + "," + this.gameID + "," + this.direction).getBytes();
+        return ("3" + this.playerID + "," + this.gameID + "," + this.direction).getBytes();
 
     }
 

@@ -46,9 +46,12 @@ public class ServerPacketHandler implements Runnable {
 	}
 
 	private void handlePacket() {
-		for(int i = 0; i < data.length; i++){
-			System.out.println(data[i]);
-		}
+	//	for(int i = 0; i < data.length; i++){
+	//		System.out.println(data[i]);
+		//}
+		String message = new String(data);
+		System.out.println("PACKET RECEIVED ON SERVER : " + message);
+		
 		System.out.println(data.length + " " + data[0] + " " + data[50]);
 		System.out.println("String = " + dataString);
 		Packets type = Packet.checkPacketID(dataString.substring(0, 1));

@@ -92,6 +92,7 @@ public class ClientPacketHandler{
     		System.out.println("Game client bombx = " + game.getMap().getGamers().get(i).getX());
     		game.getMap().getGamers().get(i).setY(gameState.getGamersY()[i]);
     		game.getMap().getGamers().get(i).setPlayerAliveInfo(gameState.getGamersAlive()[i]);
+    		System.out.println("PLAYER ALIVE = " + gameState.getGamersAlive()[i]);
     		game.getMap().getGamers().get(i).getBomber().get(0).setX(gameState.getBombX()[i]);
     		game.getMap().getGamers().get(i).getBomber().get(0).setY(gameState.getBombY()[i]);
     		game.getMap().getGamers().get(i).getBomber().get(0).setLaidBool(gameState.getBombLaid()[i]);

@@ -45,7 +45,7 @@ public class KeyPress extends KeyAdapter {
 	}
 	
 	private String getMovableData(int keycode){
-		String toSend = String.valueOf(2) + String.valueOf(player.getID()) + String.valueOf(BombeStart.getGameID()) + String.valueOf(keycode);
+		String toSend = String.valueOf(3) + String.valueOf(player.getID()) + "," + String.valueOf(BombeStart.getGameID()) + "," + String.valueOf(keycode);
 		return toSend;
 	}
 
