@@ -45,7 +45,7 @@ public class KeyPress extends KeyAdapter {
 	}
 	
 	private String getMovableData(int keycode){
-		String toSend = String.valueOf(player.getID()) + String.valueOf(BombeStart.getGameID()) + String.valueOf(keycode);
+		String toSend = String.valueOf(2) + String.valueOf(player.getID()) + String.valueOf(BombeStart.getGameID()) + String.valueOf(keycode);
 		return toSend;
 	}
 
@@ -86,7 +86,7 @@ public class KeyPress extends KeyAdapter {
 
 						if (map.getWallleft()[0].getX() + 40 < tempA.getX()) {
 							player.setX(tempA.getX());
-							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes()).run();
+							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes());
 
 						}
 					}
@@ -122,7 +122,7 @@ public class KeyPress extends KeyAdapter {
 
 						if (map.getWallbot()[0].getY() > tempA.getY() + 30) {
 							player.setY(tempA.getY());
-							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes()).run();
+							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes());
 
 						}
 					}
@@ -157,7 +157,7 @@ public class KeyPress extends KeyAdapter {
 
 						if (map.getWallright()[0].getX() > tempA.getX() + 30) {
 							player.setX(tempA.getX());
-							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes()).run();
+							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes());
 
 						}
 					}
@@ -194,7 +194,7 @@ public class KeyPress extends KeyAdapter {
 
 						if (map.getWalltop()[0].getY() + 40 < tempA.getY()) {
 							player.setY(tempA.getY());
-							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes()).run();
+							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes());
 
 						}
 					}
@@ -203,7 +203,7 @@ public class KeyPress extends KeyAdapter {
 			} else if (Keycode == input5) {
 				boolean bombCheck =	setBomb(player);
 				if(bombCheck == true){
-					new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes()).run();
+					new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes());
 
 				}
 			}

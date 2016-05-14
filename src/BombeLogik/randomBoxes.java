@@ -8,7 +8,10 @@ package BombeLogik;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.Random;
+
 import javax.swing.ImageIcon;
+
+import FireBase.Main;
 
 /**
  ********** REAL HERE**********************************
@@ -24,7 +27,7 @@ public class randomBoxes {
 	private Image img;
 
 	public randomBoxes(int x, int y) {
-		ImageIcon WI = new ImageIcon("Src/ImagesBombe/block.png");
+		ImageIcon WI = new ImageIcon(Main.class.getResource("/ImagesBombe/block.png"));
 		img = WI.getImage();
 		this.x = x;
 		this.y = y;

@@ -8,8 +8,12 @@ package BombeLogik;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
+import java.net.URL;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
+
+import FireBase.Main;
 
 /**
  ********** REAL HERE**********************************
@@ -34,7 +38,8 @@ public class Bombs {
 	private ArrayList<powerUp> bonuses = new ArrayList<>();
 
 	public Bombs(int ownerID) {
-		ImageIcon WI = new ImageIcon("Src/ImagesBombe/bomb.png");
+		URL bomb = Main.class.getResource("/ImagesBombe/bomb.png");
+		ImageIcon WI = new ImageIcon(bomb);
 		img = WI.getImage();
 		this.bombOwner = ownerID;
 		this.firebombs.add(new fireBomb());
@@ -42,7 +47,6 @@ public class Bombs {
 		this.firebombs.add(new fireBomb());
 		this.firebombs.add(new fireBomb());
 		this.firebombs.add(new fireBomb());
-
 	}
 
 	public void setX(int x) {

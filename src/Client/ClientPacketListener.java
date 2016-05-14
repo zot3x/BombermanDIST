@@ -8,6 +8,8 @@ import java.net.MulticastSocket;
 import java.net.SocketAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import packets.Packet;
 import packets.PacketClientConnect;
@@ -17,6 +19,8 @@ import packets.PacketGameState;
 import packets.PacketMove;
 import packets.Packet.Packets;
 import Server.NetworkPlayer;
+import ServerBombeLogik.BombeServerStart;
+import ServerBombeLogik.drawMap;
 import BombeLogik.BombeStart;
 
 public class ClientPacketListener extends Thread {
@@ -33,18 +37,34 @@ public class ClientPacketListener extends Thread {
             this.ipAddress = InetAddress.getLocalHost();
             
             game.setSocket(socket);
+    		Packet packet = new PacketClientConnect(30);
+            new ClientPacketSender(socket, packet.getData());
             
         } catch (SocketException e) {
             e.printStackTrace();
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
+        
+        Thread thread = new Thread(new Runnable() {
+			public void run() {
+				 while (true) {
+			            byte[] data = new byte[512];
+			            DatagramPacket packet = new DatagramPacket(data, data.length);
+			            try {
+			                socket.receive(packet);
+			            } catch (IOException e) {
+			                e.printStackTrace();
+			            }
+			            new ClientPacketHandler(socket, packet, game);
+			        }
+			
+			}
+			});
+        thread.start();
     }
 
-    public void run() {
-    	
-    	
-    	
+/*    public void run() {
         while (true) {
             byte[] data = new byte[512];
             DatagramPacket packet = new DatagramPacket(data, data.length);
@@ -56,7 +76,7 @@ public class ClientPacketListener extends Thread {
             new ClientPacketHandler(socket, packet, game).run();
         }
     }
-    
+  */  
     public static DatagramSocket getSocket(){
     	return socket;
     }

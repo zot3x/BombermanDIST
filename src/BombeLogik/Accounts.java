@@ -5,10 +5,13 @@
  */
 package BombeLogik;
 
+import FireBase.Main;
 import brugerautorisation.transport.soap.Bruger;
+
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 
 /**
@@ -46,21 +49,21 @@ public class Accounts {
 		String placeMent = "null";
 		switch (ID) {
 		case 0:
-			placeMent = "Src/ImagesBombe/hadi.png";
+			placeMent = "/ImagesBombe/hadi.png";
 			break;
 		case 1:
-			placeMent = "Src/ImagesBombe/rsz_niclas.png";
+			placeMent = "/ImagesBombe/rsz_niclas.png";
 			break;
 		case 2:
-			placeMent = "Src/ImagesBombe/rsz_fayad.png";
+			placeMent = "/ImagesBombe/rsz_fayad.png";
 			break;
 		case 3:
-			placeMent = "Src/ImagesBombe/rsz_anwar.png";
+			placeMent = "/ImagesBombe/rsz_anwar.png";
 			break;
 		default:
 			break;
 		}
-		ImageIcon ic = new ImageIcon(placeMent);
+		ImageIcon ic = new ImageIcon(Main.class.getResource(placeMent));
 		this.icon = ic.getImage();
 	}
 

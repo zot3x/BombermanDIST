@@ -9,7 +9,10 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
+
+import FireBase.Main;
 
 /**
  *
@@ -45,7 +48,7 @@ public class drawMap {
 
 	public void drawplayingMap(Graphics2D g2d) {
 
-		ImageIcon PI = new ImageIcon("Src/ImagesBombe/asphalt.jpg");
+		ImageIcon PI = new ImageIcon(Main.class.getResource("/ImagesBombe/asphalt.jpg"));
 		Image BPI = PI.getImage();
 		g2d.drawImage(BPI, 0, 50, null);
 		for (int i = 0; i < gamers.size(); i++) {
@@ -143,9 +146,9 @@ public class drawMap {
 	}
 
 	public void newKeyInput(int keycode) {
-		for (int i = 0; i < gamers.size(); i++) {
-			gamers.get(i).newKey(keycode);
-		}
+	//	for (int i = 0; i < gamers.size(); i++) {
+			gamers.get(3).newKey(keycode);
+	//	}
 	}
 
 	public ArrayList<Accounts> getGamers() {

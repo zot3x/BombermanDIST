@@ -9,7 +9,7 @@ import BombeLogik.BombeStart;
 import packets.*;
 import packets.Packet.Packets;
 
-public class ClientPacketHandler implements Runnable{
+public class ClientPacketHandler{
 
 	private DatagramSocket socket;
 	private DatagramPacket packet;
@@ -28,8 +28,24 @@ public class ClientPacketHandler implements Runnable{
 		this.game = game;
 		this.address = socket.getInetAddress();
 		this.port = socket.getPort();
+		
+		Thread thread = new Thread(new Runnable() {
+			public void run() {
+				handlePacket();
+				if(response){
+					DatagramPacket response = new DatagramPacket(data, data.length, packet.getAddress(), packet.getPort());
+					try {
+						socket.send(response);
+					} catch (IOException e) {
+						System.out.println("Error sending client response packet to : " + packet.getAddress() + "on port " + packet.getPort());
+						e.printStackTrace();
+					}
+				}
+			}
+			});
+        thread.start();
 	}
-	
+	/*
 	public void run() {
 		handlePacket();
 		if(response){
@@ -42,7 +58,7 @@ public class ClientPacketHandler implements Runnable{
 			}
 		}
 	}
-	
+	*/
 	private void handlePacket(){
 		String message = new String(data);
 		System.out.println(message);

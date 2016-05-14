@@ -7,7 +7,10 @@ package BombeLogik;
 
 import java.awt.Image;
 import java.awt.Rectangle;
+
 import javax.swing.ImageIcon;
+
+import FireBase.Main;
 
 /**
  ********** REAL HERE**********************************
@@ -27,7 +30,7 @@ public class fireBomb {
 	private int fireTimeOn = 50;
 
 	public fireBomb() {
-		ImageIcon WI = new ImageIcon("Src/ImagesBombe/rsz_explosion.png");
+		ImageIcon WI = new ImageIcon(Main.class.getResource("/ImagesBombe/rsz_explosion.png"));
 		fireImg = WI.getImage();
 	}
 

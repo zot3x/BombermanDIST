@@ -7,10 +7,12 @@ package BombeLogik;
 
 import Client.ClientPacketListener;
 import Client.ClientPacketSender;
+import FireBase.Main;
 import BombeLogik.drawMap;
 //import brugerautorisation.transport.soap.Bruger;
 //import brugerautorisation.transport.soap.Brugeradmin;
 //import brugerautorisation.transport.soap.BrugeradminImplService;
+
 
 import java.applet.Applet;
 import java.awt.Color;
@@ -50,7 +52,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 	private Graphics tempI;
 	guiComp guicomp = new guiComp();
 	private drawMap map;
-//	Bruger logIn;
+	//Bruger logIn;
 	boolean check = false;
 	private final Set<Integer> pressed = new HashSet<>();
 	private static Applet instance;
@@ -92,7 +94,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 		setSize(HEIGHT, WIDTH);
 		setFocusable(true);
 		addKeyListener(this);
-		state = state.MENU;
+	//	state = state.MENU;
 		add(guicomp.getLogBut());
 		add(guicomp.getHighS());
 		add(guicomp.getLogText());
@@ -124,8 +126,8 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 
 			}
 
-		});*/
-			
+		});
+		*/	
 		new ClientPacketListener(this).run();
 	}
 
@@ -153,10 +155,6 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 			guicomp.getHighS().setVisible(false);
 			guicomp.getLogBut().setVisible(false);
 		});
-		
-		
-		Packet packet = new PacketClientConnect(30);
-        new ClientPacketSender(socket, packet.getData()).run();
 
 		guicomp.getHighS().addActionListener(new ActionListener() {
 			@Override
@@ -216,7 +214,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 	@Override
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
-		ImageIcon im = new ImageIcon("Src/ImagesBombe/background.png");
+		ImageIcon im = new ImageIcon(Main.class.getResource("/ImagesBombe/background.png"));
 		Image BI = im.getImage();
 		g2d.setColor(Color.black);
 		g2d.fillRect(0, 0, BI.getWidth(this), 50);

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import packets.Packet;
 
 
-public class ClientPacketSender implements Runnable{
+public class ClientPacketSender{
 	
 		private DatagramSocket socket;
 		private byte[] data;
@@ -26,17 +26,22 @@ public class ClientPacketSender implements Runnable{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			//this.port = socket.getPort();
+			   Thread thread = new Thread(new Runnable() {
+					public void run() {
+						readySendPacket();
+					}
+					});
+		        thread.start();
 			}
 		
 		ClientPacketSender(int id, int gameID, int keycode){
 			
 		}
-		
+		/*
 		public void run() {
 			readySendPacket();
 		}
-		
+		*/
 		private void readySendPacket(){
 				sendDataToServer();
 		}

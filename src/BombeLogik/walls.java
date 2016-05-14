@@ -7,7 +7,11 @@ package BombeLogik;
 
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.net.URL;
+
 import javax.swing.ImageIcon;
+
+import FireBase.Main;
 
 /**
  ********** REAL HERE**********************************
@@ -20,8 +24,11 @@ public class walls {
 	private Image img;
 
 	public walls(int x, int y, int h, int w) {
-		ImageIcon WI = new ImageIcon("Src/ImagesBombe/brownstone.png");
+		URL bomb = Main.class.getResource("/ImagesBombe/brownstone.png");
+		ImageIcon WI = new ImageIcon(bomb);
 		img = WI.getImage();
+		//ImageIcon WI = new ImageIcon(Main.class.getResource("Src/ImagesBombe/brownstone.png"));
+		//img = WI.getImage();
 		this.x = x;
 		this.y = y;
 		this.w = w;
