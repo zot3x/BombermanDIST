@@ -6,10 +6,11 @@
 package BombeLogik;
 
 import Client.ClientPacketListener;
+import Client.ClientPacketSender;
 import BombeLogik.drawMap;
-import brugerautorisation.transport.soap.Bruger;
-import brugerautorisation.transport.soap.Brugeradmin;
-import brugerautorisation.transport.soap.BrugeradminImplService;
+//import brugerautorisation.transport.soap.Bruger;
+//import brugerautorisation.transport.soap.Brugeradmin;
+//import brugerautorisation.transport.soap.BrugeradminImplService;
 
 import java.applet.Applet;
 import java.awt.Color;
@@ -20,6 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.net.DatagramSocket;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +29,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
+
+import packets.Packet;
+import packets.PacketClientConnect;
 
 /**
  *
@@ -45,11 +50,12 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 	private Graphics tempI;
 	guiComp guicomp = new guiComp();
 	private drawMap map;
-	Bruger logIn;
+//	Bruger logIn;
 	boolean check = false;
 	private final Set<Integer> pressed = new HashSet<>();
 	private static Applet instance;
 	private static int gameID;
+	private DatagramSocket socket;
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -101,7 +107,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 		map = new drawMap(4);
 		state = state.PLAYING;
 		
-		guicomp.getCheckLog().addActionListener(new ActionListener() {
+	/*	guicomp.getCheckLog().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
@@ -118,7 +124,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 
 			}
 
-		});
+		});*/
 			
 		new ClientPacketListener(this).run();
 	}
@@ -147,6 +153,10 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 			guicomp.getHighS().setVisible(false);
 			guicomp.getLogBut().setVisible(false);
 		});
+		
+		
+		Packet packet = new PacketClientConnect(30);
+        new ClientPacketSender(socket, packet.getData()).run();
 
 		guicomp.getHighS().addActionListener(new ActionListener() {
 			@Override
@@ -303,5 +313,9 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 	
 	public drawMap getMap(){
 		return map;
+	}
+	
+	public void setSocket(DatagramSocket socket){
+		this.socket = socket;
 	}
 }

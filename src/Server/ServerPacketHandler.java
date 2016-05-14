@@ -71,7 +71,7 @@ public class ServerPacketHandler implements Runnable {
 			break;
 		case DISCONNECT:
 			PacketDisconnect packetDisconnect = new PacketDisconnect(data);
-			System.out.println("[" + address + ":" + port + "] "
+			System.out.println("Player " + address + ":" + port + "] "
 					+ packet.getAddress() + " has left...");
 			ServerPacketListener
 					.removeConnection((PacketDisconnect) packetToHandle);

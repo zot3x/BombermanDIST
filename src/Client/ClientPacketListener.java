@@ -32,8 +32,8 @@ public class ClientPacketListener extends Thread {
             ClientPacketListener.socket = new DatagramSocket();
             this.ipAddress = InetAddress.getLocalHost();
             
-            Packet packet = new PacketClientConnect(30);
-            new ClientPacketSender(socket, packet.getData()).run();
+            game.setSocket(socket);
+            
         } catch (SocketException e) {
             e.printStackTrace();
         } catch (UnknownHostException e) {

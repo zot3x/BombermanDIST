@@ -62,7 +62,6 @@ public class ClientPacketHandler implements Runnable{
 		case GAMESTATE:
 			PacketGameState packetGameState = new PacketGameState(data);
 			handleGameState(packetGameState);
-			
 		case READY:
 		}
 	}
@@ -87,7 +86,7 @@ public class ClientPacketHandler implements Runnable{
     			counter++;
 
     		}
-
+    		
     	}
     	for(int i = 0; i<105;i++){
     		game.getMap().getRandBox()[i].setMode(gameState.getRandSprunget()[i]);
