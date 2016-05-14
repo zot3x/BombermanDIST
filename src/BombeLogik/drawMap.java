@@ -28,10 +28,11 @@ public class drawMap {
 	private int boxBoomBonus = 5;
 	private ArrayList<powerUp> powerUps = new ArrayList<>();
 	private randomBoxes[] randBox;
+	private int playerID;
 
-
-	public drawMap(int Players) {
+	public drawMap(int Players, int playerID) {
 		map = new initMap(Players);
+		this.playerID = playerID;
 		this.laidbombs = map.laidbombs;
 		this.bombposA = map.getBombposA();
 		gamers = map.getGamers();
@@ -157,7 +158,7 @@ public class drawMap {
 
 	public void newKeyInput(int keycode) {
 	//	for (int i = 0; i < gamers.size(); i++) {
-			gamers.get(0).newKey(keycode);
+			gamers.get(playerID).newKey(keycode);
 	//	}
 	}
 

@@ -244,12 +244,4 @@ public class PacketGameState extends Packet {
 	public byte[] getRandSprunget() {
 		return randSprunget;
 	}
-
-	private String[] readGamestate(byte[] data){
-		String[] gameState = new String[200];
-		
-		String gameStates = new String(data, 0 , data.length);
-		
-		return gameState;
-	}
 }

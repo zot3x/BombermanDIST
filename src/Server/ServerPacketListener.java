@@ -80,15 +80,14 @@ public class ServerPacketListener implements Runnable {
 
 	}
 
-	  public static int[] addConnection(NetworkPlayer player) {
-		  int data[] = new int[2];
+	  public static String addConnection(NetworkPlayer player) {
 		  newPlayers.add(player);
-		  data[0] = newPlayers.size();
-		  data[1] = gameID;
+		  
+		  String toSend = String.valueOf(1) + String.valueOf(newPlayers.size()-1) + "," + String.valueOf(gameID);
 		  if(newPlayers.size() == 4){
 			  startNewGame();
 		  }
-		  return data;
+		  return toSend;
 	    }
 
 	    public static void removeConnection(PacketDisconnect packet) {

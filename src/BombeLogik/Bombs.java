@@ -30,7 +30,7 @@ public class Bombs {
 	private ArrayList<fireBomb> firebombs = new ArrayList<>();
 	private int timeBomb = 0;
 	private byte laidDown = 0;
-	private final int bombCowndown = 250;
+	private final int bombCowndown = 150;
 	private int bombOwner;
 	private int bombSize = 1;
 	private int boxenBoom = 0;

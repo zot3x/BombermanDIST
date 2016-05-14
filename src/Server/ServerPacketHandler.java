@@ -13,7 +13,7 @@ public class ServerPacketHandler implements Runnable {
 
 	private DatagramSocket socket;
 	private DatagramPacket packet;
-	private boolean response = false;
+	private boolean response;
 	byte[] data = null;
 	String dataString = null;
 	private Packet packetToHandle = null;
@@ -24,6 +24,7 @@ public class ServerPacketHandler implements Runnable {
 	public ServerPacketHandler(DatagramSocket socket, DatagramPacket packet) {
 		this.socket = socket;
 		this.packet = packet;
+		this.response = false;
 		this.data = packet.getData();
 		this.dataString = new String(data, 0, data.length);
 		address = packet.getAddress();
@@ -33,13 +34,17 @@ public class ServerPacketHandler implements Runnable {
 	public void run() {
 		handlePacket();
 		if (response) {
+			System.out.println("Sending responsepacket");
+			System.out.println("TRYING TO SEND RESPONSEPACKET WITH : " + data.toString() + " " + data.length + " " + address + " " + port);
 			DatagramPacket response = new DatagramPacket(data, data.length,
-					packet.getAddress(), packet.getPort());
+					address, port);
+					System.out.println("RESPONSEPACKET : " + data.toString() + " " + data.length + " " + address + " " + port);
 			try {
+				//new ServerPacketSender()
 				socket.send(response);
 			} catch (IOException e) {
 				System.out.println("Error sending server response packet to : "
-						+ packet.getAddress() + "on port " + packet.getPort());
+						+ address + "on port " + port);
 				e.printStackTrace();
 			}
 		}
@@ -63,11 +68,13 @@ public class ServerPacketHandler implements Runnable {
 		case CONNECT:
 			System.out.println("Inside CONNECT SWITCH");
 			PacketClientConnect packetConnect = new PacketClientConnect(data);
-			System.out.println("Hallo!!" + packetConnect.getPacketID());
 			System.out.println("Packet with packetID: " + packetConnect.getPacketID() + " from IP: " + address + " on port: " + port + " has been handled...");
 			NetworkPlayer player = new NetworkPlayer(address, port);
 			System.out.println(player.getIpAddress() + " " + player.getPort());
-			int[] responseData = ServerPacketListener.addConnection(player);
+			String responseData = ServerPacketListener.addConnection(player);
+			System.out.println("Responsedata = " + responseData);
+			this.data = responseData.getBytes();
+			response = true;
 			System.out.println("player added");
 //			Packet responsePacket = new PacketConnect(responseData[0], responseData[1]);
 	//		new ServerPacketSender(responsePacket,);

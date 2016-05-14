@@ -61,19 +61,15 @@ public class ClientPacketHandler{
 	*/
 	private void handlePacket(){
 		String message = new String(data);
-		System.out.println(message);
 		Packets type = Packet.checkPacketID(message.substring(0, 1));
 		switch (type) {
 		default:
 		case INVALID:
 			break;
 		case CONNECT:
-			packetToHandle = new PacketConnect(data);
-			System.out.println("[" + address + ":" + port + "] "
-					+ packet.getAddress() + " has connected...");
-			
-		//	NetworkPlayer player = new NetworkPlayer(address, port);
-		//	ClientPacketListener.addConnection(player, (PacketConnect) packetToHandle);
+			System.out.println("INSIDE CONNECT CLIENT");
+			PacketClientConnectResponse packetClientConnectResponse = new PacketClientConnectResponse(data);
+			handleClientConnectResponse(packetClientConnectResponse);
 			break;
 		case GAMESTATE:
 			PacketGameState packetGameState = new PacketGameState(data);
@@ -82,10 +78,18 @@ public class ClientPacketHandler{
 		}
 	}
 	
+	private void handleClientConnectResponse(
+			PacketClientConnectResponse packetClientConnectResponse) {
+		System.out.println("PACKET CLIENTRESPONSE ID's " + packetClientConnectResponse.getGameID() + " " + packetClientConnectResponse.getId());
+		game.setGameID(packetClientConnectResponse.getGameID());
+		game.setPlayerID(packetClientConnectResponse.getId());
+	}
+	
 	public void handleGameState(PacketGameState gameState){
     	game.getMap();
     	int counter = 0;
     	for(int i = 0; i<4;i++){
+        	System.out.println("NULLPOINTER GAMEX = " + gameState.getGamersX()[i]);
     		game.getMap().getGamers().get(i).setX(gameState.getGamersX()[i]);
     		game.getMap().getGamers().get(i).setY(gameState.getGamersY()[i]);
     		game.getMap().getGamers().get(i).setPlayerAliveInfo(gameState.getGamersAlive()[i]);
@@ -104,7 +108,5 @@ public class ClientPacketHandler{
     	for(int i = 0; i<105;i++){
     		game.getMap().getRandBox()[i].setMode(gameState.getRandSprunget()[i]);
     	}
-    	
-		
     }
 }

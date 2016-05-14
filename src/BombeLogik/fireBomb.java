@@ -27,7 +27,7 @@ public class fireBomb {
 	private Image fireImg;
 	private int fireTime = 0;
 	private byte fireon = 0;
-	private int fireTimeOn = 50;
+	private int fireTimeOn = 35;
 
 	public fireBomb() {
 		ImageIcon WI = new ImageIcon(Main.class.getResource("/ImagesBombe/rsz_explosion.png"));
@@ -116,7 +116,6 @@ public class fireBomb {
 
 	public String getSendableData(){
 		String toSend = String.valueOf(fireX) + String.valueOf(fireY) + String.valueOf(fireon);
-		//+ String.valueOf(fireTime) + String.valueOf(fireon) + String.valueOf(fireTimeOn)
 		return toSend;
 	}
 }

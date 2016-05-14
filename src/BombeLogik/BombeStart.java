@@ -14,6 +14,7 @@ import BombeLogik.drawMap;
 //import brugerautorisation.transport.soap.BrugeradminImplService;
 
 
+
 import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -59,6 +60,8 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 	private static int gameID;
 	private DatagramSocket socket;
 
+	private int playerID = 100;
+	
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
@@ -106,8 +109,8 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 		add(guicomp.getSTART4());
 		add(guicomp.getHighScore());
 		
-		map = new drawMap(4);
-		state = state.PLAYING;
+
+		state = state.LOGIN;
 		
 	/*	guicomp.getCheckLog().addActionListener(new ActionListener() {
 			@Override
@@ -128,7 +131,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 
 		});
 		*/	
-		new ClientPacketListener(this).run();
+
 	}
 
 	/*
@@ -151,7 +154,24 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 		guicomp.getLogBut().setVisible(true);
 		guicomp.getLogBut().addActionListener((ActionEvent e) -> {
 		//	state = state.LOGIN;
+			System.out.println("PlayerID in client = " + playerID);
+			new ClientPacketListener(this).run();
+			boolean waiting = true;
+			while(waiting){
+				if(!(playerID == 100))
+					waiting = false;
+					try {
+						Thread.sleep(10);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			}
+			map = new drawMap(4, playerID);
 			state = state.PLAYING;
+			guicomp.getLogText().setVisible(false);
+			guicomp.getPass().setVisible(false);
+			guicomp.getCheckLog().setVisible(false);
 			guicomp.getHighS().setVisible(false);
 			guicomp.getLogBut().setVisible(false);
 		});
@@ -166,7 +186,6 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 		});
 		
 		while (true) {
-			state = state.PLAYING;
 			repaint();
 			try {
 				Thread.sleep(17);
@@ -307,6 +326,10 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 	
 	public static int getGameID(){
 		return gameID;
+	}
+	
+	public void setPlayerID(int id){
+		this.playerID = id;
 	}
 	
 	public drawMap getMap(){
