@@ -275,7 +275,7 @@ public class KeyPress extends KeyAdapter {
 		boolean bombAvaliable = false;
 		if (acc.getLaidBombs() < acc.getavaBomb()) {
 			Point bombpos = findBombPos(acc);
-			map.getLaidbombs().add(acc.getBomber().get(acc.getLaidBombs()));
+			//map.getLaidbombs().add(acc.getBomber().get(acc.getLaidBombs()));
 			acc.getBomber().get(acc.getLaidBombs()).setX(bombpos.x);
 			acc.getBomber().get(acc.getLaidBombs()).setY(bombpos.y);
 			acc.getBomber().get(acc.getLaidBombs()).setLaid();

@@ -126,12 +126,22 @@ public class drawMap {
 						.drawFire(g2d, map.getRandBox(), gamers);
 			}
 		}
-
+		
+		for(int i = 0; i<gamers.size(); i++){
+			if(gamers.get(i).getBomber().get(0).getbombstatus() == 1){
+				g2d.drawImage(gamers.get(i).getBomber().get(0).getImg(), gamers.get(i).getBomber().get(0).getX(), gamers.get(i).getBomber().get(0).getY(), null);
+			}
+		}
+		
+		
+		checkLaidBomb();
 		checkFireBombs(laidbombs, map.getBombposA());
 
 	}
 
 	private void checkFireBombs(ArrayList<Bombs> laidbombs, Point[] bombposA) {
+
+		
 		for (int i = 0; i < laidbombs.size(); i++) {
 			if (laidbombs.get(i).getbombstatus() == 1) {
 				laidbombs.get(i).setTimeBomb();
@@ -204,5 +214,22 @@ public class drawMap {
 	
 	public randomBoxes[] getRandBox() {
 		return randBox;
+	}
+	
+	
+	private void checkLaidBomb(){
+		for(int i = 0; i<gamers.size();i++){
+			Bombs tempBomb = gamers.get(i).getBomber().get(0);
+		
+			if(tempBomb.getbombstatus() == 1){
+				for(int j = 0; j<laidbombs.size(); j++){
+					if(laidbombs.get(j).getBombOwner() != tempBomb.getBombOwner()){
+						laidbombs.add(tempBomb);
+					}
+				}
+			}
+		
+			
+		}
 	}
 }

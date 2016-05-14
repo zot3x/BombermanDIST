@@ -166,7 +166,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 		});
 		
 		while (true) {
-			
+			state = state.PLAYING;
 			repaint();
 			try {
 				Thread.sleep(17);

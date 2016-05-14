@@ -19,51 +19,189 @@ public class PacketGameState extends Packet {
 		String[] dataArray = readData(data).split(",");
 		int arrcounter = 0;
 		int randcounter = 0;
-		System.out.println(dataArray[0] + " " + dataArray[1] + " " + dataArray[100]);
-		System.out.println(dataArray.length);
-		for (int i = 0; i < dataArray.length; i++) {
-			int counter = i;
-			if (i < gamersX.length + gamersY.length + gamersID.length + gamersAlive.length + bombX.length + bombY.length
-					+ bombLaid.length + fireX.length + fireY.length + fireMode.length) {
-				System.out.println("Gamer X = " + dataArray[counter] + " " + counter);
-				this.gamersX[arrcounter] = (short) Short.parseShort(dataArray[counter]);
-				counter++;
-				System.out.println("Gamer Y = " + dataArray[counter] + " " + counter);
-				this.gamersY[arrcounter] = (short) Short.parseShort(dataArray[counter]);
-				counter++;
-				System.out.println("Gamer ID = " + dataArray[counter] + " " + counter);
-				this.gamersID[arrcounter] = (byte) Byte.parseByte(dataArray[counter]);
-				counter++;
-				System.out.println("Gamer ALIVE = " + dataArray[counter] + " " + counter);
-				this.gamersAlive[arrcounter] = (byte) Byte.parseByte(dataArray[counter]);
-				counter++;
-				System.out.println("BOMB X = " + dataArray[counter] + " " + counter);
-				this.bombX[arrcounter] = (short) Short.parseShort(dataArray[counter]);
-				counter++;
-				this.bombY[arrcounter] = (short) Short.parseShort(dataArray[counter]);
-				counter++;
-				this.bombLaid[arrcounter] = (byte) Byte.parseByte(dataArray[counter]);
-				counter++;
+		for(int i = 0; i<dataArray.length; i++){
+			if(i<22){
+				this.gamersX[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+				this.gamersY[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+
+				this.gamersID[arrcounter] = (byte) Byte.parseByte(dataArray[i]);
+				i++;
+
+				this.gamersAlive[arrcounter] = (byte) Byte.parseByte(dataArray[i]);
+				i++;
+
+				this.bombX[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+
+				this.bombY[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+
+				this.bombLaid[arrcounter] = (byte) Byte.parseByte(dataArray[i]);
+				i++;
+
 				for (int j = 0; j < 5; j++) {
-					this.fireX[j] = (short) Short.parseShort(dataArray[counter]);
-					counter++;
-					this.fireY[j] = (short) Short.parseShort(dataArray[counter]);
-					counter++;
-					this.fireMode[j] = (byte) Byte.parseByte(dataArray[counter]);
-					counter++;
+					this.fireX[j] = (short) Short.parseShort(dataArray[i]);
+					i++;
+					this.fireY[j] = (short) Short.parseShort(dataArray[i]);
+					i++;
+					this.fireMode[j] = (byte) Byte.parseByte(dataArray[i]);
+					i++;
 				}
-
-			} else {
-				this.randSprunget[randcounter] = (byte) Byte.parseByte(dataArray[counter]);
-				counter++;
-				randcounter++;
-
+				i--;
+				arrcounter++;
 			}
-			arrcounter++;
-			i = i + counter-1;
+			else if (i>21 && i <44){
+				this.gamersX[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+				this.gamersY[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+
+				this.gamersID[arrcounter] = (byte) Byte.parseByte(dataArray[i]);
+				i++;
+
+				this.gamersAlive[arrcounter] = (byte) Byte.parseByte(dataArray[i]);
+				i++;
+
+				this.bombX[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+
+				this.bombY[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+
+				this.bombLaid[arrcounter] = (byte) Byte.parseByte(dataArray[i]);
+				i++;
+
+				for (int j = 5; j < 10; j++) {
+					this.fireX[j] = (short) Short.parseShort(dataArray[i]);
+					i++;
+					this.fireY[j] = (short) Short.parseShort(dataArray[i]);
+					i++;
+					this.fireMode[j] = (byte) Byte.parseByte(dataArray[i]);
+					i++;
+				}
+				i--;
+				arrcounter++;
+				
+			}
+			else if(i>43 && i<66){
+				this.gamersX[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+				this.gamersY[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+
+				this.gamersID[arrcounter] = (byte) Byte.parseByte(dataArray[i]);
+				i++;
+
+				this.gamersAlive[arrcounter] = (byte) Byte.parseByte(dataArray[i]);
+				i++;
+
+				this.bombX[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+
+				this.bombY[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+
+				this.bombLaid[arrcounter] = (byte) Byte.parseByte(dataArray[i]);
+				i++;
+
+				for (int j = 10; j < 15; j++) {
+					this.fireX[j] = (short) Short.parseShort(dataArray[i]);
+					i++;
+					this.fireY[j] = (short) Short.parseShort(dataArray[i]);
+					i++;
+					this.fireMode[j] = (byte) Byte.parseByte(dataArray[i]);
+					i++;
+				}
+				i--;
+				arrcounter++;
+				
+			}
+			else if(i>65 && i<88){
+				this.gamersX[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+				this.gamersY[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+
+				this.gamersID[arrcounter] = (byte) Byte.parseByte(dataArray[i]);
+				i++;
+
+				this.gamersAlive[arrcounter] = (byte) Byte.parseByte(dataArray[i]);
+				i++;
+
+				this.bombX[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+
+				this.bombY[arrcounter] = (short) Short.parseShort(dataArray[i]);
+				i++;
+
+				this.bombLaid[arrcounter] = (byte) Byte.parseByte(dataArray[i]);
+				i++;
+
+				for (int j = 15; j < 20; j++) {
+					this.fireX[j] = (short) Short.parseShort(dataArray[i]);
+					i++;
+					this.fireY[j] = (short) Short.parseShort(dataArray[i]);
+					i++;
+					this.fireMode[j] = (byte) Byte.parseByte(dataArray[i]);
+					i++;
+				}
+				i--;
+				arrcounter++;
+				
+			}
+			else if (i> 87){
+				this.randSprunget[randcounter] = (byte) Byte.parseByte(dataArray[i]);
+				randcounter++;
+			}
+			
+			
 		}
 		
-		System.out.println("GAMERS ALIVE = " + gamersAlive[0] + " " + gamersAlive[1] + " " + gamersAlive[2] + " " + gamersAlive[3]);
+		
+		
+		
+		
+//		
+//		for (int i = 0; i < dataArray.length; i++) {
+//			int counter = i;
+//			if (i < gamersX.length + gamersY.length + gamersID.length + gamersAlive.length + bombX.length + bombY.length
+//					+ bombLaid.length + fireX.length + fireY.length + fireMode.length) {
+//				System.out.println("Gamer X = " + dataArray[counter] + " " + counter);
+//				this.gamersX[arrcounter] = (short) Short.parseShort(dataArray[counter]);
+//				counter++;
+//				this.gamersY[arrcounter] = (short) Short.parseShort(dataArray[counter]);
+//				counter++;
+//				this.gamersID[arrcounter] = (byte) Byte.parseByte(dataArray[counter]);
+//				counter++;
+//				this.gamersAlive[arrcounter] = (byte) Byte.parseByte(dataArray[counter]);
+//				counter++;
+//				this.bombX[arrcounter] = (short) Short.parseShort(dataArray[counter]);
+//				counter++;
+//				this.bombY[arrcounter] = (short) Short.parseShort(dataArray[counter]);
+//				counter++;
+//				this.bombLaid[arrcounter] = (byte) Byte.parseByte(dataArray[counter]);
+//				counter++;
+//				for (int j = 0; j < 5; j++) {
+//					this.fireX[j] = (short) Short.parseShort(dataArray[counter]);
+//					counter++;
+//					this.fireY[j] = (short) Short.parseShort(dataArray[counter]);
+//					counter++;
+//					this.fireMode[j] = (byte) Byte.parseByte(dataArray[counter]);
+//					counter++;
+//				}
+//
+//			} else {
+//				this.randSprunget[randcounter] = (byte) Byte.parseByte(dataArray[counter]);
+//				counter++;
+//				randcounter++;
+//
+//			}
+//			arrcounter++;
+//			i = i + counter-1;
+//		}
+		
 
 	}
 

@@ -48,11 +48,8 @@ public class ClientPacketSender{
 		
 		 private void sendData(byte[] data) {
 	         DatagramPacket packet = new DatagramPacket(data, data.length, address, port);
-	         System.out.println(packet.getAddress() + " " + packet.getPort());
-	         System.out.println(packet.toString());
-       	  System.out.println(packet.getData());
+
 	          try {
-	        	  System.out.println(packet.getData());
 	              socket.send(packet);
 	          } catch (IOException e) {
 	              e.printStackTrace();
