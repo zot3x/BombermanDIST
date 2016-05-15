@@ -34,11 +34,11 @@ public class ServerPacketHandler implements Runnable {
 	public void run() {
 		handlePacket();
 		if (response) {
-			System.out.println("Sending responsepacket");
-			System.out.println("TRYING TO SEND RESPONSEPACKET WITH : " + data.toString() + " " + data.length + " " + address + " " + port);
+		//	System.out.println("Sending responsepacket");
+		//	System.out.println("TRYING TO SEND RESPONSEPACKET WITH : " + data.toString() + " " + data.length + " " + address + " " + port);
 			DatagramPacket response = new DatagramPacket(data, data.length,
 					address, port);
-					System.out.println("RESPONSEPACKET : " + data.toString() + " " + data.length + " " + address + " " + port);
+					//System.out.println("RESPONSEPACKET : " + data.toString() + " " + data.length + " " + address + " " + port);
 			try {
 				//new ServerPacketSender()
 				socket.send(response);
@@ -55,34 +55,34 @@ public class ServerPacketHandler implements Runnable {
 	//		System.out.println(data[i]);
 		//}
 		String message = new String(data);
-		System.out.println("PACKET RECEIVED ON SERVER : " + message);
+		//System.out.println("PACKET RECEIVED ON SERVER : " + message);
 		
-		System.out.println(data.length + " " + data[0] + " " + data[50]);
-		System.out.println("String = " + dataString);
+		//System.out.println(data.length + " " + data[0] + " " + data[50]);
+		//System.out.println("String = " + dataString);
 		Packets type = Packet.checkPacketID(dataString.substring(0, 1));
-		System.out.println("Type = " + type);
+		//System.out.println("Type = " + type);
 		switch (type) {
 		default:
 		case INVALID:
 			break;
 		case CONNECT:
-			System.out.println("Inside CONNECT SWITCH");
+			//System.out.println("Inside CONNECT SWITCH");
 			PacketClientConnect packetConnect = new PacketClientConnect(data);
-			System.out.println("Packet with packetID: " + packetConnect.getPacketID() + " from IP: " + address + " on port: " + port + " has been handled...");
+			//System.out.println("Packet with packetID: " + packetConnect.getPacketID() + " from IP: " + address + " on port: " + port + " has been handled...");
 			NetworkPlayer player = new NetworkPlayer(address, port);
-			System.out.println(player.getIpAddress() + " " + player.getPort());
+			//System.out.println(player.getIpAddress() + " " + player.getPort());
 			String responseData = ServerPacketListener.addConnection(player);
-			System.out.println("Responsedata = " + responseData);
+			//System.out.println("Responsedata = " + responseData);
 			this.data = responseData.getBytes();
 			response = true;
-			System.out.println("player added");
+			//System.out.println("player added");
 //			Packet responsePacket = new PacketConnect(responseData[0], responseData[1]);
 	//		new ServerPacketSender(responsePacket,);
 			break;
 		case DISCONNECT:
 			PacketDisconnect packetDisconnect = new PacketDisconnect(data);
-			System.out.println("Player " + address + ":" + port + "] "
-					+ packet.getAddress() + " has left...");
+			//System.out.println("Player " + address + ":" + port + "] "
+				//	+ packet.getAddress() + " has left...");
 			ServerPacketListener
 					.removeConnection((PacketDisconnect) packetToHandle);
 			break;

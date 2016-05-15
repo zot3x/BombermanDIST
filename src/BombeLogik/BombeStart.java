@@ -13,8 +13,6 @@ import BombeLogik.drawMap;
 //import brugerautorisation.transport.soap.Brugeradmin;
 //import brugerautorisation.transport.soap.BrugeradminImplService;
 
-
-
 import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -158,7 +156,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 			new ClientPacketListener(this).run();
 			boolean waiting = true;
 			while(waiting){
-				if(!(playerID == 100))
+				if(!(getPlayerID() == 100))
 					waiting = false;
 					try {
 						Thread.sleep(10);
@@ -328,7 +326,7 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 		return gameID;
 	}
 	
-	public void setPlayerID(int id){
+	public synchronized void setPlayerID(int id){
 		this.playerID = id;
 	}
 	
@@ -338,5 +336,9 @@ public class BombeStart extends Applet implements Runnable, KeyListener {
 	
 	public void setSocket(DatagramSocket socket){
 		this.socket = socket;
+	}
+	
+	public synchronized int getPlayerID(){
+		return playerID;
 	}
 }

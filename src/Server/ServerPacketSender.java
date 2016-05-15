@@ -26,12 +26,11 @@ public class ServerPacketSender implements Runnable {
 		this.socket = socket;
 		this.data = data;
 		this.players = players;
-		System.out.println("Serverpacketsender created");
+		//System.out.println("Serverpacketsender created");
 	}
 	
 	@Override
 	public void run() {
-		System.out.println("ruuun!");
 		readySendPacket();
 	}
 	
@@ -40,7 +39,7 @@ public class ServerPacketSender implements Runnable {
 			sendDataToClient();
 		}
 		else if(!(players == null)){
-			System.out.println("Sending data to all clients");
+		//	System.out.println("Sending data to all clients");
 			sendDataToAllClients();
 		}
 	}
@@ -59,10 +58,10 @@ public class ServerPacketSender implements Runnable {
 	}
 	
 	private void sendDataToAllClients() {
-		System.out.println(players.size());
+		//System.out.println(players.size());
         for (NetworkPlayer player : players) {
-        	System.out.println(players.size());
-        	System.out.println(player.getIpAddress() + " " + player.getPort());
+        	//System.out.println(players.size());
+        	//System.out.println(player.getIpAddress() + " " + player.getPort());
             sendData(data, player.getIpAddress(), player.getPort());
         }
     }

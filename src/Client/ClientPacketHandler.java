@@ -67,7 +67,7 @@ public class ClientPacketHandler{
 		case INVALID:
 			break;
 		case CONNECT:
-			System.out.println("INSIDE CONNECT CLIENT");
+			//System.out.println("INSIDE CONNECT CLIENT");
 			PacketClientConnectResponse packetClientConnectResponse = new PacketClientConnectResponse(data);
 			handleClientConnectResponse(packetClientConnectResponse);
 			break;
@@ -89,7 +89,6 @@ public class ClientPacketHandler{
     	game.getMap();
     	int counter = 0;
     	for(int i = 0; i<4;i++){
-        	System.out.println("NULLPOINTER GAMEX = " + gameState.getGamersX()[i]);
     		game.getMap().getGamers().get(i).setX(gameState.getGamersX()[i]);
     		game.getMap().getGamers().get(i).setY(gameState.getGamersY()[i]);
     		game.getMap().getGamers().get(i).setPlayerAliveInfo(gameState.getGamersAlive()[i]);
@@ -100,8 +99,7 @@ public class ClientPacketHandler{
     			game.getMap().getGamers().get(i).getBomber().get(0).getFirebombs().get(j).setFireX(gameState.getFireX()[counter]);
     			game.getMap().getGamers().get(i).getBomber().get(0).getFirebombs().get(j).setFireY(gameState.getFireY()[counter]);
     			game.getMap().getGamers().get(i).getBomber().get(0).getFirebombs().get(j).setFireMode(gameState.getFireMode()[counter]);
-    			counter++;
-
+    			counter++;    			
     		}
     		
     	}
