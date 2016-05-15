@@ -85,7 +85,7 @@ public class KeyPress extends KeyAdapter {
 					if (goodMove == true) {
 
 						if (map.getWallleft()[0].getX() + 40 < tempA.getX()) {
-							player.setX(tempA.getX());
+							//player.setX(tempA.getX());
 							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes());
 
 						}
@@ -121,7 +121,7 @@ public class KeyPress extends KeyAdapter {
 					if (goodMove == true) {
 
 						if (map.getWallbot()[0].getY() > tempA.getY() + 30) {
-							player.setY(tempA.getY());
+							//player.setY(tempA.getY());
 							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes());
 
 						}
@@ -156,7 +156,7 @@ public class KeyPress extends KeyAdapter {
 					if (goodMove == true) {
 
 						if (map.getWallright()[0].getX() > tempA.getX() + 30) {
-							player.setX(tempA.getX());
+							//player.setX(tempA.getX());
 							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes());
 
 						}
@@ -193,7 +193,7 @@ public class KeyPress extends KeyAdapter {
 					if (goodMove == true) {
 
 						if (map.getWalltop()[0].getY() + 40 < tempA.getY()) {
-							player.setY(tempA.getY());
+							//player.setY(tempA.getY());
 							new ClientPacketSender(ClientPacketListener.getSocket(), getMovableData(Keycode).getBytes());
 
 						}
@@ -275,11 +275,11 @@ public class KeyPress extends KeyAdapter {
 		boolean bombAvaliable = false;
 		if (acc.getLaidBombs() < acc.getavaBomb()) {
 			Point bombpos = findBombPos(acc);
-			//map.getLaidbombs().add(acc.getBomber().get(acc.getLaidBombs()));
+			map.getLaidbombs().add(acc.getBomber().get(acc.getLaidBombs()));
 			acc.getBomber().get(acc.getLaidBombs()).setX(bombpos.x);
 			acc.getBomber().get(acc.getLaidBombs()).setY(bombpos.y);
-			acc.getBomber().get(acc.getLaidBombs()).setLaid();
-			acc.setLaidBombs();
+			//acc.getBomber().get(acc.getLaidBombs()).setLaid();
+			//acc.setLaidBombs();
 			bombAvaliable = true;
 
 		}
